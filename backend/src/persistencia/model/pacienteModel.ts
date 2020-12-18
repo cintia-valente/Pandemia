@@ -22,4 +22,4 @@ const PacienteSchema = new Schema({
     endereco: { type: EnderecoSchema }
 });
 
-export const PacienteModel: Model<PacienteDocument> = model<PacienteDocument>('Paciente', PacienteSchema, 'Pacientes');
+export const PacienteModel: Model<PacienteDocument> = model<PacienteDocument>('Paciente', PacienteSchema, 'pacientes');

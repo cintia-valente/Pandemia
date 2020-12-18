@@ -16,4 +16,4 @@ const AtendimentoSchema = new Schema({
   tempo: { type: Number, required: true },
 });
 
-export const AtendimentoModel: Model<AtendimentoDocument> = model<AtendimentoDocument>('Atendimento', AtendimentoSchema, 'Atendimentos');
+export const AtendimentoModel: Model<AtendimentoDocument> = model<AtendimentoDocument>('Atendimento', AtendimentoSchema, 'atendimentos');
