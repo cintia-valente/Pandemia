@@ -1,5 +1,5 @@
 import express from 'express';
-import { Paciente} from '../entidades/paciente';
+import { Paciente } from '../entidades/paciente';
 import { PacienteRepositorio } from '../persistencia/repositorio/pacienteRepositorio';
 
 export async function getPacientes(req: express.Request, res: express.Response, next: express.NextFunction) {

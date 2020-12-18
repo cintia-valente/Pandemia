@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import {path as path, router as router, router2} from './controller/routes';
+import { path as path, router as router, router2 } from './controller/routes';
 import errorhandler from 'errorhandler';
 import cors from 'cors';
 

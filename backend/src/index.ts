@@ -1,7 +1,7 @@
 import { connect } from 'mongoose';
-import { PatientRepo } from './persistencia/Repository/patientRepository';
-import { AttendanceRepo } from './persistencia/Repository/attendanceRepository';
-import { UnitRepo } from './persistencia/Repository/unitRepository';
+import { PacienteRepositorio } from './persistencia/repositorio/pacienteRepositorio';
+import { AtendimentoRepositorio } from './persistencia/repositorio/atendimentoRepositorio';
+import { UnidadeRepositorio } from './persistencia/repositorio/unidadeRepositorio';
 import app from './app';
 import { Console } from 'console';
 
