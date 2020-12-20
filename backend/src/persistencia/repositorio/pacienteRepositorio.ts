@@ -4,10 +4,6 @@ import { ConnectionStates } from "mongoose";
 
 export class PacienteRepositorio {
 
-    static async createPaciente(paciente: Paciente ): Promise<Paciente>{
-        return PacienteModel.create(paciente);
-    }
-
     static async getPacientes(): Promise<Paciente[]>{
         let paciente = await PacienteModel.find().exec();
         return paciente;
@@ -29,6 +25,10 @@ export class PacienteRepositorio {
         } else {
             throw new Error('Cpf inexistente.');
         }
+    }
+
+    static async postPaciente(paciente: Paciente): Promise<Paciente> {
+        return await PacienteModel.create(paciente);
     }
 
     static async patchPaciente(id: string , paciente: Paciente): Promise<Paciente>{

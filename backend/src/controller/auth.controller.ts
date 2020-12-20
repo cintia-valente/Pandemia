@@ -5,6 +5,23 @@ import { Usuario } from '../entidades/usuario';
 import * as bcrypt from 'bcrypt';
 import * as jwt from 'jsonwebtoken';
 
+export async function postUser(req: express.Request, res: express.Response, next: express.NextFunction){
+   const {email} = req.body;
+   try{
+       if(await Usuarios.findOne({email})) return res.status(400).send({error: 'User already exist'});
+       const user: Usuario = await Usuarios.create(req.body);
+       user.senha = 'undefined';
+       return res.send(user);
+
+   }catch(err){
+       return res.status(400).send({error: 'Registration failed'});
+   }
+}
+
+export async function work(req: express.Request, res: express.Response, next: express.NextFunction){
+   console.log('work');
+}
+
 export async function authUser(req: express.Request, res: express.Response, next: express.NextFunction){
     const {email,password} = req.body;
     const user = await Usuarios.findOne({email}).select('+password');

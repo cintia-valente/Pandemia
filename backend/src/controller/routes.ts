@@ -10,32 +10,34 @@ export const path = '';
 
 export const router2 = Router();
 
-router.get('unidade', unidadeController.getterUnits);
-router.get('unidade/:unitid', unidadeController.getterUnitById);
-router.get('/atendimento/:attid', atendimentoController.getterAttById);
-router.get('/atendimento', atendimentoController.getterAllatendimento);
-router.get('/atendimentoofunit/:unitid', atendimentoController.getteratendimentoByUnitId);
+router.get('/unidade', unidadeController.getUnidades);
+router.get('/unidade/:unidid', unidadeController.getUnidadePorId);
+router.get('/unidade/:unidnome', unidadeController.getUnidadePorNome);
 
-router.get('/paciente', pacienteController.getterpaciente);
-router.get('/paciente/:pacienteid', pacienteController.getterpacienteById);
-router.get('/pacientecpf/:cpf', pacienteController.getterpacienteBycpf)
+router.get('/atendimento', atendimentoController.getAtendimentos);
+router.get('/atendimento/:atendid', atendimentoController.getAtendimentoPorId);
+router.get('/atendimentodeunidade/:unitid', atendimentoController.getAtendimentoPorUnidadeId);
+router.get('/atendimentodetempo/:unitid', atendimentoController.getAtendimentoTempo);
 
-router.get('/paciente', pacienteController.authMiddleware,api.getterpaciente);
-router.get('/tempo/:id', atendimentoController.getterAttTime);
+router.get('/paciente', pacienteController.getPacientes);
+router.get('/paciente/:pacienteid', pacienteController.getPacientePorId);
+router.get('/pacientecpf/:cpf', pacienteController.getPacientePorCpf)
 
+router.get('/authpaciente', authController.authMiddleware, pacienteController.getPacientes);
+router.get('/tempo/:id', atendimentoController.getAtendimentoTempo);
 
-router.post('unidade', unidadeController.authMiddleware,api.createUnit);
-router.post('/atendimento', atendimentoController.authMiddleware,api.createAtt);
-router.post('/paciente', pacienteController.authMiddleware,api.createpaciente);
+router.post('/authunid', authController.authMiddleware, unidadeController.postUnidade);
+router.post('/authatendimento', authController.authMiddleware, atendimentoController.postAtendimento);
+router.post('/authpaciente', authController.authMiddleware, pacienteController.postPaciente);
 
-router.patch('unidade/:unitid', unidadeController.authMiddleware,api.patchUnit);
-router.patch('/atendimento/:attid', atendimentoController.authMiddleware,api.patchAtt);
+router.patch('unidade/:unidid', authController.authMiddleware, unidadeController.patchUnidade);
+router.patch('/atendimento/:atendid', authController.authMiddleware, atendimentoController.patchAtendimento);
 
-router.delete('unidade/:unitid', unidadeController.authMiddleware,api.deleteUnit);
-router.delete('/atendimento/:attid', atendimentoController.authMiddleware, api.deleteUnit);
+router.delete('unidade/:unidid', authController.authMiddleware, unidadeController.deleteUnidade);
+router.delete('/atendimento/:atendid', authController.authMiddleware, atendimentoController.deleteAtendimento);
 
-router2.post('/auth/register', authController.createUser);
+router2.post('/auth/register', authController.postUser);
 router.post('/auth/authenticate', authController.authUser);
 
 router2.use(authController.authMiddleware);
-router2.get('/auth/atendimento2', authController.getterAllatendimento);
+router2.get('/auth/atendimento2', atendimentoController.getAtendimentos);

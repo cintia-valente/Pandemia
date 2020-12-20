@@ -39,6 +39,17 @@ export async function getUnidadePorNome(req: express.Request, res: express.Respo
     }
 }
 
+export async function postUnidade(req: express.Request, res: express.Response, next: express.NextFunction):Promise<void> {
+    try {
+        const unidade: any = req.body;
+        const postUnidade: any =  await UnidadeRepositorio.postUnidade(unidade);
+
+        res.send(postUnidade);
+    } catch(err) {
+        next(err);
+    }
+}
+
 export async function patchUnidade(req: express.Request, res: express.Response, next: express.NextFunction) {
     try {
         const id:string = req.params.id;

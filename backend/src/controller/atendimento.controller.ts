@@ -56,6 +56,17 @@ export async function getAtendimentoTempo(req: express.Request, res: express.Res
 
 }
 
+export async function postAtendimento(req: express.Request, res: express.Response, next: express.NextFunction):Promise<void> {
+    try {
+        const atendimento:any = req.body;
+        const postAtendimento:AtendimentoRepositorio =  await AtendimentoRepositorio.postAtendimento(atendimento);
+
+        res.send(postAtendimento);
+    } catch(error) {
+        next(error);
+    }
+}
+
 export async function patchAtendimento(req: express.Request, res: express.Response, next: express.NextFunction) {
     try {
         const id:string = req.params.id;

@@ -39,6 +39,17 @@ export async function getPacientePorCpf(req: express.Request, res: express.Respo
     }
 }
 
+export async function postPaciente(req: express.Request, res: express.Response, next: express.NextFunction):Promise<void> {
+    try {
+        const paciente: any = req.body;
+        const postPaciente: Paciente =  await PacienteRepositorio.postPaciente(paciente);
+
+        res.send(postPaciente);
+    } catch(error) {
+        next(error);
+    }
+}
+
 export async function patchPaciente(req: express.Request, res: express.Response, next: express.NextFunction) {
     try {
         const id:string = req.params.id;

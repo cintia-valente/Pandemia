@@ -5,10 +5,6 @@ import { PacienteModel } from '../model/pacienteModel';
 
 export class AtendimentoRepositorio {
 
-    static async createAtendimento(Atendimento: Atendimento): Promise<Atendimento> {
-        return AtendimentoModel.create(Atendimento);
-    }
-
     static async getAtendimentos(): Promise<Atendimento[]> {
         let consulta = AtendimentoModel.find().populate('pacientes', PacienteModel);
         return consulta.exec();
@@ -31,7 +27,7 @@ export class AtendimentoRepositorio {
         return atendimentos;
     }
 
-    //Busca o tempo de determindade unidade
+    //Busca o tempo de determinada unidade
     static async getTempo(id: any, paciente?: boolean): Promise<any[]> {
 
         let tempos;
@@ -42,6 +38,10 @@ export class AtendimentoRepositorio {
 
         }
         return tempos;
+    }
+
+    static async postAtendimento(Atendimento: Atendimento): Promise<Atendimento> {
+        return AtendimentoModel.create(Atendimento);
     }
 
     static async patchAtendimento(id: string, atendimento: Atendimento): Promise<Atendimento> {

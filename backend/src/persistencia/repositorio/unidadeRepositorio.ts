@@ -5,10 +5,6 @@ import { PacienteModel } from '../model/pacienteModel';
 
 export class UnidadeRepositorio {
 
-    static async createUnidade(Unidade: Unidade): Promise<Unidade>{
-        return UnidadeModel.create(Unidade);
-    }
-
     static async getUnidades(): Promise<Unidade[]>{
         return UnidadeModel.find().exec();
     }
@@ -31,6 +27,10 @@ export class UnidadeRepositorio {
         }
     }
 
+    static async postUnidade(Unidade: Unidade): Promise<Unidade>{
+        return UnidadeModel.create(Unidade);
+    }
+    
     static async patchUnidade(id: string , unidade: Unidade): Promise<Unidade>{
         let atualiza = await UnidadeModel.findById(id).exec();
         if(atualiza != null){
