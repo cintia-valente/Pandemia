@@ -14,16 +14,16 @@ const UsuarioSchema = new mongoose.Schema({
         required: true,
         lowercase: true,
     },
-    senha:{
+    password:{
         type: String,
         required: true,
-        select: false,
+        select: false, //quando buscar um usuário o campo password não vai vir junto
     }
 });
 
 UsuarioSchema.pre<UsuarioDocument>("save",async function(next:any){
-    const hash = await bcrypt.hash(this.senha,10);
-    this.senha = hash;
+    const hash = await bcrypt.hash(this.password,10);
+    this.password = hash;
     next();
 })
 

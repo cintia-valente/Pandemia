@@ -5,7 +5,7 @@ import errorhandler from 'errorhandler';
 import cors from 'cors';
 
 const app = express();
-app.set('port', 3100);
+app.set('port', 3000);
 app.use((req, res, next) => {
 	//Qual site tem permissão de realizar a conexão, no exemplo abaixo está o "*" indicando que qualquer site pode fazer a conexão
     res.header("Access-Control-Allow-Origin", "*");

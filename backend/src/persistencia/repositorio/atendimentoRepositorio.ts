@@ -40,8 +40,8 @@ export class AtendimentoRepositorio {
         return tempos;
     }
 
-    static async postAtendimento(Atendimento: Atendimento): Promise<Atendimento> {
-        return AtendimentoModel.create(Atendimento);
+    static async postAtendimento(atendimento: Atendimento): Promise<Atendimento> {
+        return AtendimentoModel.create(atendimento);
     }
 
     static async patchAtendimento(id: string, atendimento: Atendimento): Promise<Atendimento> {

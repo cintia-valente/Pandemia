@@ -30,10 +30,10 @@ router.post('/authunid', authController.authMiddleware, unidadeController.postUn
 router.post('/authatendimento', authController.authMiddleware, atendimentoController.postAtendimento);
 router.post('/authpaciente', authController.authMiddleware, pacienteController.postPaciente);
 
-router.patch('unidade/:unidid', authController.authMiddleware, unidadeController.patchUnidade);
+router.patch('/unidade/:unidid', authController.authMiddleware, unidadeController.patchUnidade);
 router.patch('/atendimento/:atendid', authController.authMiddleware, atendimentoController.patchAtendimento);
 
-router.delete('unidade/:unidid', authController.authMiddleware, unidadeController.deleteUnidade);
+router.delete('/unidade/:unidid', authController.authMiddleware, unidadeController.deleteUnidade);
 router.delete('/atendimento/:atendid', authController.authMiddleware, atendimentoController.deleteAtendimento);
 
 router2.post('/auth/register', authController.postUser);

@@ -11,6 +11,7 @@ const EnderecoSchema = new Schema({
 }); 
 
 const PacienteSchema = new Schema({
+    idPaciente: {type: Number},
     nome: { type: String, required: true, max: 100 },
     cpf: { type: String, required: true, min: 0, max: 14},
     idade: { type: Number, required: true, min: 0 },
