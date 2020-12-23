@@ -55,7 +55,7 @@ export async function authMiddleware(req: express.Request, res: express.Response
     //se não tiver uma autenticação, retorna uma mensagem dizendo que o token não foi informado:
     if(!authHeader) return res.status(401).send({error: 'No token provided'}); 
     
-    //formato certo de um token jwt por exemplo, Bearer uwenuewnfuiwnfu8415145efunhwfnw
+    //formato certo de um token jwt, por exemplo: Bearer uwenuewnfuiwnfu8415145efunhwfnw
     const parts = authHeader.split(' '); //então separa as duas partes(Bearer e o token)
     
     //verifica se tem as duas partes:
@@ -71,8 +71,8 @@ export async function authMiddleware(req: express.Request, res: express.Response
       return res.status(401).send({error: 'Token malformatted'});
     
     /*verifica se o token do usuário que está pedindo a requisição é válido:
-      recebe o token, o hash, e um callback (o erro se tiver e a variável decode 
-      que é o id do usuário caso o token tiver certo)*/
+      recebe o token, o hash, e um callback (o erro, se tiver e a variável decode 
+      que é o id do usuário caso o token estiver certo)*/
     jwt.verify(token, authConfig.secret, (err, decoded) => { 
         if(err) return res.status(401).send({error: 'Token invalid'}); //se o token tiver algum erro, retorna uma mensagem de erro
         req.params.userId = (<any>decoded)._id; //se tiver certo, então inclui o id nas próx requisições
