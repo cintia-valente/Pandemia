@@ -28,3 +28,4 @@ afterEach(async () => {
 afterAll(async () => {
     await dbhandler.closeDatabase();
 });
+
