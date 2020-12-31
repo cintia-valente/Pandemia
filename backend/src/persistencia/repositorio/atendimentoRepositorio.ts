@@ -41,7 +41,7 @@ export class AtendimentoRepositorio {
     }
 
     static async postAtendimento(atendimento: Atendimento): Promise<Atendimento> {
-        return AtendimentoModel.create(atendimento);
+        return await AtendimentoModel.create(atendimento);
     }
 
     static async patchAtendimento(id: string, atendimento: Atendimento): Promise<Atendimento> {

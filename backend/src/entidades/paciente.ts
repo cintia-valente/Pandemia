@@ -1,5 +1,4 @@
 export interface Paciente{
-    idPaciente?: number,
     nome: string,
     cpf: string,
     idade: number,

@@ -1,7 +1,8 @@
 import { Paciente } from './paciente';
 
 export interface Atendimento{
-    paciente: Paciente,
+    idUnidade: string,
+    paciente: Paciente|String,
     data?: Date,
     possibContagio: boolean,
     teste1?: boolean,

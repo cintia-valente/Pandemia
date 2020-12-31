@@ -1,24 +1,23 @@
-import { Document, model, Schema, SchemaTypes, Model } from 'mongoose';
+import { Document, model, Schema, Model } from 'mongoose';
 import { Paciente } from '../../entidades/paciente';
 
 interface PacienteDocument extends Document, Paciente { }
 
 const EnderecoSchema = new Schema({
-    rua: {type: String, required: true, minlength: 1, maxlength: 100},
-    numero: {type: Number, required: true, minlength: 1, maxlength: 10},
-    bairro: {type: String, required: true, minlength: 1, maxlength: 100},
-    cidade: {type: String, required: true, minlength: 1, maxlength: 100}
+    rua: String,
+    numero: Number,
+    bairro: String,
+    cidade: String
 }); 
 
 const PacienteSchema = new Schema({
-    idPaciente: {type: Number},
     nome: { type: String, required: true, max: 100 },
-    cpf: { type: String, required: true, min: 0, max: 14},
-    idade: { type: Number, required: true, min: 0 },
+    cpf: { type: String, required:true, unique:true, validate:/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/ },
+    idade: { type: Number, required: true},
     telefone: { type: String, max: 100 },
     email: { type: String, max: 100 },
-    sexo: { type: String,  required: true, min: 0 },
-    peso: { type: String, min: 0 },
+    sexo: { type: String,  required: true, min: 1},
+    peso: { type: Number, min: 0 },
     altura: { type: Number, min: 0},
     endereco: { type: EnderecoSchema }
 });
