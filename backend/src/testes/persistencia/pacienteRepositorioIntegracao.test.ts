@@ -29,8 +29,6 @@ afterAll(async () => {
     await dbhandler.closeDatabase();
 });
 
-const idInexistente = 'aaaaaaaaaaaaaaaaaaaaaaaa'
-
 const idInvalido = 'a';
 
 describe('Testes de integração de PacienteRepositorio', () => {
@@ -93,7 +91,7 @@ describe('getPacientePorCpf()', () => {
     });
 
     describe('postPaciente()', () => {
-        test('Deve criar um paciente', async () => {
+        test('Deve postPaciente um objeto', async () => {
             const paciente = await PacienteRepositorio.postPaciente(pacienteValido);
             const pacientes = await PacienteRepositorio.getPacientes();
             expect(pacientes).toHaveLength(1);
@@ -125,51 +123,6 @@ describe('getPacientePorCpf()', () => {
     });
 
     describe('patchPaciente()', () => {
-        test('Deve apresentar erro ao atualizar o paciente', async () => {
-            const pacienteID = await informacaoParaTeste();
-            const pacienteValido =
-            {
-                nome: "Lupita Fernandes",
-                cpf: "576.445.124-47",
-                idade: 17,
-                telefone: "947756352",
-                email: "lupi@fernandes.com",
-                sexo: "F",
-                peso: 50,
-                altura: 1.60,
-                endereco: {
-                    rua: "PP",
-                    numero: 73,
-                    bairro: "DEBEB",
-                    cidade: "Mexico"
-                },
-            }
-            const result = async () => { await PacienteRepositorio.patchPaciente("2", pacienteValido) };
-            expect(result).toBeDefined();
-        });
-
-        test('Deve apresentar erro ao passar id invalido na alteração', async () => {
-            const idInvalido = -0;
-            const paciente = await informacaoParaTeste();
-            const result = async () => { await PacienteRepositorio.patchPaciente("idInvalido", paciente[1]) }
-            expect(result).toBeDefined();
-        });
-
-        describe('deletarPaciente()', () => {
-            test('deve deletar um paciente', async () => {
-                expect(async () =>{
-                    const deletaPaciente = await PacienteRepositorio.deletePaciente('id');
-                    expect(deletaPaciente).toBeDefined(); 
-            });
-        });
-    
-            test('deve deletar um paciente válido', async () => {
-                expect(async () =>{
-                    const deletaPaciente = await PacienteRepositorio.deletePaciente('id')
-                }).rejects.toThrowError();
-            });
-        });
-        
         /*test('Deve retornar um paciente ', async () => {
             const pacienteID = await informacaoParaTeste();
             const pacienteValido = 
@@ -205,7 +158,52 @@ describe('getPacientePorCpf()', () => {
             expect(paciente.endereco?.numero).toEqual(pacienteValido.endereco.numero);
             expect(paciente.endereco?.bairro).toEqual(pacienteValido.endereco.bairro);
             expect(paciente.endereco?.cidade).toEqual(pacienteValido.endereco.cidade);
+        });
+
+        test('Deve apresentar erro ao atualizar o paciente', async () => {
+            const pacienteID = await informacaoParaTeste();
+            const pacienteValido =
+            {
+                nome: "Lupita Fernandes",
+                cpf: "576.445.124-47",
+                idade: 17,
+                telefone: "947756352",
+                email: "lupi@fernandes.com",
+                sexo: "F",
+                peso: 50,
+                altura: 1.60,
+                endereco: {
+                    rua: "PP",
+                    numero: 73,
+                    bairro: "DEBEB",
+                    cidade: "Mexico"
+                },
+            }
+            const result = async () => { await PacienteRepositorio.patchPaciente(pacienteID[0].id, pacienteValido) };
+            expect(result).toBeDefined();
         });*/
+
+        test('Deve apresentar erro ao passar id invalido na alteração', async () => {
+            const idInvalido = -0;
+            const paciente = await informacaoParaTeste();
+            const result = async () => { await PacienteRepositorio.patchPaciente("idInvalido", paciente[1]) }
+            expect(result).toBeDefined();
+        });
+
+        describe('deletarPaciente()', () => {
+            test('deve deletar um paciente', async () => {
+                expect(async () =>{
+                    const deletaPaciente = await PacienteRepositorio.deletePaciente('id');
+                    expect(deletaPaciente).toBeDefined(); 
+            });
+        });
+    
+            test('deve deletar um paciente válido', async () => {
+                expect(async () =>{
+                    const deletaPaciente = await PacienteRepositorio.deletePaciente('id')
+                }).rejects.toThrowError();
+            });
+        });
     });
 });
 

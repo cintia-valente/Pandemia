@@ -225,7 +225,7 @@ const mockPacienteCPFErro = {
     }
 };
 
-function getMockPacientes() {
+function getMockPacientes(): Paciente[]{
     const pacientes: Paciente[] = [
         {
             nome: "Mia Colluci",
