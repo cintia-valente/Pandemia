@@ -11,6 +11,7 @@ const EnderecoSchema = new Schema({
 }); 
 
 const UnidadeSchema = new Schema({
+    idUnidade: { type: String },
     nome: { type: String, required: true, max: 100 },
     endereco: { type: EnderecoSchema },
 });
