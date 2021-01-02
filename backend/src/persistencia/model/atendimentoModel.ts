@@ -7,6 +7,7 @@ import { types } from 'util';
 interface AtendimentoDocument extends Atendimento, Document { }
 
 const AtendimentoSchema = new Schema({
+  idAtendimento: { type: String },
   idUnidade: { type: String, required: true},
   paciente: { type: SchemaTypes.ObjectId, ref: 'Paciente', required: true },
   data: { type: Date },

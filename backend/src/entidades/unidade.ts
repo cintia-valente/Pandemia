@@ -1,4 +1,5 @@
 export interface Unidade{
+    idUnidade?: string,
     nome: string,
     endereco?: {
         rua: string,
