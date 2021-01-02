@@ -93,7 +93,7 @@ describe('getPacientePorCpf()', () => {
     });
 
     describe('postPaciente()', () => {
-        test('Deve postPaciente um objeto', async () => {
+        test('Deve criar um paciente', async () => {
             const paciente = await PacienteRepositorio.postPaciente(pacienteValido);
             const pacientes = await PacienteRepositorio.getPacientes();
             expect(pacientes).toHaveLength(1);
@@ -125,7 +125,7 @@ describe('getPacientePorCpf()', () => {
     });
 
     describe('patchPaciente()', () => {
-        test('Deve apresentar erro ao atualiazar o paciente', async () => {
+        test('Deve apresentar erro ao atualizar o paciente', async () => {
             const pacienteID = await informacaoParaTeste();
             const pacienteValido =
             {
