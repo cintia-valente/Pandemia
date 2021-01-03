@@ -25,7 +25,7 @@ export async function getAtendimentoPorId(req: express.Request, res: express.Res
     }
 }
 
-export async function getAtendimentoPorUnidadeId(req: express.Request, res: express.Response, next: express.NextFunction):Promise<void> {
+export async function getAtendimentoUnidadePorId(req: express.Request, res: express.Response, next: express.NextFunction):Promise<void> {
     try {
         const id:string = req.params.unidade;
         const andamento:boolean =req.query.andamento == "true";

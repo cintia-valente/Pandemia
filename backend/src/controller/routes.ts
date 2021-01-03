@@ -16,7 +16,7 @@ router.get('/unidade/:unidnome', unidadeController.getUnidadePorNome);
 
 router.get('/atendimento', atendimentoController.getAtendimentos);
 router.get('/atendimento/:atendid', atendimentoController.getAtendimentoPorId);
-router.get('/atendimentodeunidade/:unitid', atendimentoController.getAtendimentoPorUnidadeId);
+router.get('/atendimentodeunidade/:unitid', atendimentoController.getAtendimentoUnidadePorId);
 router.get('/atendimentodetempo/:unitid', atendimentoController.getAtendimentoTempo);
 
 router.get('/paciente', pacienteController.getPacientes);
