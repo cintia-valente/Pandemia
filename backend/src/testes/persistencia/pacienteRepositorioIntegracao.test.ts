@@ -91,7 +91,7 @@ describe('getPacientePorCpf()', () => {
     });
 
     describe('postPaciente()', () => {
-        test('Deve postPaciente um objeto', async () => {
+        test('Deve inserir um paciente', async () => {
             const paciente = await PacienteRepositorio.postPaciente(pacienteValido);
             const pacientes = await PacienteRepositorio.getPacientes();
             expect(pacientes).toHaveLength(1);
@@ -110,6 +110,7 @@ describe('getPacientePorCpf()', () => {
             expect(paciente.endereco?.bairro).toEqual(pacienteValido.endereco.bairro);
             expect(paciente.endereco?.cidade).toEqual(pacienteValido.endereco.cidade);
         });
+
         test('Deve apresentar erro ao inserir cpf invalido', async () => {
             const insercao = async () => { await PacienteRepositorio.postPaciente(pacienteCpfInalido) }
             await expect(insercao).rejects.toThrow();
