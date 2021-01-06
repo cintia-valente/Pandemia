@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import {Routes, Route, Router, RoutesRecognized} from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-top-bar',
+  templateUrl: './top-bar.component.html',
+  styleUrls: ['./top-bar.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class TopBarComponent implements OnInit {
 
   public links = [
     {

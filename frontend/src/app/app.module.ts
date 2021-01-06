@@ -5,15 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
-//import { NavbarComponent } from './navbar/navbar.component';
-//import { SidebarComponent } from './sidebar/sidebar.component';
-//import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
+import { TopBarComponent } from './top-bar/top-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    TopBarComponent
   ],
   imports: [
     BrowserModule,
