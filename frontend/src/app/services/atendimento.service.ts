@@ -67,25 +67,6 @@ export class AtendimentoService {
       );
   }
 
-  postLogin(login) {
-    return this.http.post<any>(environment.apiUrl + '/auth/authenticate', login, this.options).pipe(
-      catchError(this.handleError)
-    );
-  }
-
-  logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-  }
-
-  isLogged(){
-    if(localStorage.getItem('token') == null){
-      return false;
-    }else{
-      return true;
-    }
-  }
-
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // Ocorreu um erro no lado do cliente ou na rede. Trate-o de acordo.

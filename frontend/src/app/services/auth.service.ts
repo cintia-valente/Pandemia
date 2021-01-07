@@ -3,53 +3,36 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
-import { Unidade } from '../entidades/unidade';
 import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UnidadeService {
+export class AuthService {
 
   options = {headers: new HttpHeaders().set('Content-type', 'application/json')};
   constructor(
     private http: HttpClient, private cookieService: CookieService
   ) { }
 
-  getUnidades(): Observable<Unidade[]> {
-    return this.http.get<any>(environment.apiUrl + '/unidade', this.options).pipe(
+  postLogin(login) {
+    return this.http.post<any>(environment.apiUrl + '/auth/authenticate', login, this.options).pipe(
       catchError(this.handleError)
     );
   }
 
-  getUnidadePorId(id: String): Observable<Unidade>{
-    return this.http.get<Unidade>(environment.apiUrl  + '/unidade/' + id).pipe(
-      catchError(this.handleError)
-    );
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
   }
 
-  getUnidadePorNome(nome: String): Observable<Unidade>{
-    return this.http.get<Unidade>(environment.apiUrl  + '/unidade/' + nome).pipe(
-      catchError(this.handleError)
-    );
-  }
-
-  postUnidade(unidade: Unidade): Observable<Unidade> {
-    return this.http.post<Unidade>(environment.apiUrl + '/authunid', unidade , this.options).pipe(
-      catchError(this.handleError)
-    );
-  }
-
-  patchUnidade(id: String, unidade : Unidade ):Observable<Unidade> {
-    return  this.http.patch<Unidade>(environment.apiUrl + '/unidade/' + id, unidade , this.options).pipe(
-      catchError(this.handleError)
-    );
-  }
-
-  deleteUnidade(id: string): Observable<Unidade>{
-    return this.http.delete<Unidade>(environment.apiUrl + '/unidade/' + id).pipe(
-      catchError(this.handleError)
-      );
+  isLogged(){
+    if(localStorage.getItem('token') == null){
+      return false;
+      console
+    }else{
+      return true;
+    }
   }
 
   private handleError(error: HttpErrorResponse) {

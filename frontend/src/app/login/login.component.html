@@ -1,20 +1,24 @@
 <div class="paglogin">
-        <div>
-            <label>LOGIN</label>
-        </div>
-        <div>
-            <input placeholder="Nome de usuário">
-        </div>
-        <div>
-            <input placeholder="Senha">
-        </div>
-        <div class="login">
-            <button type="submit">
-                LOGIN
-            </button>
-        </div>
-        <div class="menu"></div>
-        <button  [routerLink]="['../topbar']">
-            Menu
-        </button>
+    <h1 class="title animated fadeInDown">Covid-19</h1>
+    <h2>Compartilhando Informações</h2>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <div class="login">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div>
+                <label>LOGIN</label>
+            </div>
+            <div>
+                <input placeholder="Nome de usuário" formControlName="email" type="email">
+            </div>
+            <div>
+                <input placeholder="Senha" formControlName="password" type="password">
+            </div>
+            <div class="logar">
+                <button type="submit">
+                    Entrar
+                </button>
+            </div>
+        </form>
+    </div>
 </div>

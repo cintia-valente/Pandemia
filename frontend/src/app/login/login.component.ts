@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-login',
@@ -7,27 +11,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  public links = [
-    {
-      title:'Dashboard',
-      url:''
-    },
-    {
-      title:'Atendimentos',
-      url:'/atendimento'
-    },
-    {
-      title:'Pacientes',
-      url:'/pacientes'
-    },
-    {
-      title:'Unidades',
-      url:'/unidades'
-    },
-  ]
-  constructor() { }
+ login = false
 
-  ngOnInit(): void {
+  constructor(
+    private fb: FormBuilder, 
+    private router: Router, 
+    private AuthService: AuthService, 
+    private app: AppComponent) {
+
   }
+  loginForm: FormGroup = this.fb.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', Validators.required]
+  });
 
+  getEmail() {return this.loginForm.get('email'); }
+
+  getPassword() {return this.loginForm.get('password'); }
+  ngOnInit() {
+  }
+  onSubmit() {
+    try{
+      this.AuthService.postLogin({email: this.getEmail().value, password: this.getPassword().value}).subscribe(data =>{
+        let idtoken = data.idtoken;
+        localStorage.setItem('token', idtoken);
+
+        let user = data.user.name;
+        localStorage.setItem('user',user);
+        localStorage.setItem('unitid',data.user.unitid);
+
+        this.app.OnLogin();
+        this.router.navigate(['saude']);
+      });
+    }catch(err){
+      alert('erro');
+      console.log(err);
+    }
+  }
 }
