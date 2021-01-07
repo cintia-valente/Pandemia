@@ -15,7 +15,7 @@
                 <input placeholder="Senha" formControlName="password" type="password">
             </div>
             <div class="logar">
-                <button type="submit">
+                <button type="submit" [disabled]="!loginForm.valid" type="submit">
                     Entrar
                 </button>
             </div>

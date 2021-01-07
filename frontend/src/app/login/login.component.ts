@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('unitid',data.user.unitid);
 
         this.app.OnLogin();
-        this.router.navigate(['saude']);
+        this.router.navigate(['topbar']);
       });
     }catch(err){
       alert('erro');
