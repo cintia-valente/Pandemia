@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import {Routes, Route, Router, RoutesRecognized} from '@angular/router';
 
 @Component({
@@ -8,27 +8,8 @@ import {Routes, Route, Router, RoutesRecognized} from '@angular/router';
 })
 export class TopBarComponent implements OnInit {
 
-  public links = [
-    {
-      title:'Dashboard',
-      url:''
-    },
-    {
-      title:'Atendimentos',
-      url:'/atendimento'
-    },
-    {
-      title:'Pacientes',
-      url:'/pacientes'
-    },
-    {
-      title:'Unidades',
-      url:'/unidades'
-    },
-  ]
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }
