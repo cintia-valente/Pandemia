@@ -11,12 +11,16 @@ import { AuthGuardService } from './guards/auth-guard.service';
 
 import { LoginComponent } from './login/login.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
+import { CadastrarAtendimentoComponent } from './cadastrar-atendimento/cadastrar-atendimento.component';
+import { CadastrarPacienteComponent } from './cadastrar-paciente/cadastrar-paciente.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    TopBarComponent
+    TopBarComponent,
+    CadastrarAtendimentoComponent,
+    CadastrarPacienteComponent
   ],
   imports: [
     BrowserModule,

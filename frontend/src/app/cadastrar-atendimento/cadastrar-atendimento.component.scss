@@ -1,0 +1,82 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    color: rgb(59, 127, 139);
+    background-color: white;
+    text-align: left;
+    font-size: 20px;
+    margin-left: 36%;
+    margin-top: 2%;
+}
+
+.titulo{
+    font-family: sans-serif;
+    color: rgb(59, 127, 139);
+    margin-left: 7%;
+    font-weight: bold;
+    margin-top: 0%;
+}
+
+label {
+    padding: 5px;
+    margin-bottom: 0.2em;
+    color: rgb(59, 127, 139);
+}
+
+input, select, button {
+    border-radius: 5px;
+}
+
+div {
+    margin-bottom: 1em;
+}
+
+form {
+    margin-top: 0%;
+}
+
+input[type="text"], .campo input[type="email"], select {
+    padding: 0,2em;
+    border: 1px solid rgb(59, 127, 139);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+select option {
+    padding-right: 1em;
+}
+
+input:focus, select:focus {
+    background: #E0E0F8;
+}
+
+button{
+    font-size: 1.2em;
+    background: rgb(59, 127, 139);
+    border: 0;
+    margin-bottom: 1em;
+    color: #FFFFFF;
+    padding: 0.2em 0.6em;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+    text-shadow: absolute;
+    top: 90%;
+    left: 50%;
+    margin-left: 26%;
+    transform: translate(-50%, -50%);
+    margin-top: 2%;
+}
+
+button:hover {
+    background: #ccbbff;
+    box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.2);
+    text-shadow: none;
+}
+
+//Responsividade Tablet
+@media (max-width: 952px) { 
+    button {
+        transform: translate(-395%, -50%);
+    }
+}

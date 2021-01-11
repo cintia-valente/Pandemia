@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { AppComponent } from '../app.component';
@@ -28,8 +28,10 @@ export class LoginComponent implements OnInit {
   getEmail() {return this.loginForm.get('email'); }
 
   getPassword() {return this.loginForm.get('password'); }
+
   ngOnInit() {
   }
+  
   onSubmit() {
     try{
       this.AuthService.postLogin({email: this.getEmail().value, password: this.getPassword().value}).subscribe(data =>{
@@ -41,7 +43,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('unitid',data.user.unitid);
 
         this.app.OnLogin();
-        this.router.navigate(['topbar']);
+        this.router.navigate(['cadastrar-atendimento']);
       });
     }catch(err){
       alert('erro');

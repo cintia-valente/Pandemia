@@ -1,0 +1,65 @@
+<app-top-bar></app-top-bar>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-xl-8" *ngIf="isLoading">
+        <div class="titulo">Cadastro de Atendimentos</div>
+        <form class="d-flex flex-column" [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+            <div>
+                <label>Unidade:</label>
+                <input type="text" id="unid" formControlName="unidade" required maxlength="100">
+            </div>
+            <div>
+                <label>Nome do paciente*:</label>
+                <input type="text" id="nome" formControlName="nome" required maxlength="100">
+            </div>
+            <div>
+                <label>CPF*:</label>
+                <input type="text" id="cpf" formControlName="cpf" required maxlength="100">
+            </div>
+            <div>
+                <label> Idade*: </label>
+                <input placeholder="anos" type="number" id="idade" formControlName="idade" min=0 required>
+            </div>    
+            <div>
+                <label> Telefone: </label>
+                <input placeholder="telefone" type="texto" id="idade" formControlName="idade" min=0 required>
+            </div> 
+            <div>
+                <label> Data: </label>
+                <label><input type="date" id="horario_atendimento" formControlName="horario_atendimento"></label>
+            </div>   
+            <div>
+                <label for="pacienteContagio"> Possibilidade de Contágio*: </label>
+                <select formControlName="possibCont" id="possibCont" required>
+                    <option value="true">Positivo</option>
+                    <option value="false">Negativo</option>
+                </select>
+            </div>
+        
+            <div>
+                <label> Resultado teste 1: </label>
+                <select formControlName="result1" id="result1">
+                    <option value="true">Positivo</option>
+                    <option value="false">Negativo</option>
+                </select>
+        
+                <label> Resultado teste 2: </label>
+                <select formControlName="result2" id="result2">
+                    <option value="true">Ainda não testado</option>
+                    <option value="true">Positivo</option>
+                    <option value="false">Negativo</option>
+                </select>
+            </div> 
+            <div>
+                <label> Tempo*: </label>
+                <input placeholder="Tempo" type="number" id="tempo" formControlName="tempo" min=0 required>
+            </div>   
+            <div class="registrar"  [disabled]="!registerForm.valid">
+                <button type="submit" >
+                    Entrar
+                </button>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
