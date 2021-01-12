@@ -6,7 +6,7 @@
         <form class="d-flex flex-column" [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
             <div>
                 <label> Unidade: </label>
-                <select formControlName="unidades" id="unidade">
+                <select formControlName="unidades" id="unidade" (selectionChange)="getSelectedUnidade($event)">
                     <option value="" selected>  Selecione....  </option>
                     <option *ngFor="let unidade of unidade" [value]="unidade._id">{{unidade.nome}}</option>
                 </select>
