@@ -7,6 +7,8 @@ import { AtendimentoService } from '../services/atendimento.service';
 import { Atendimento } from '../entidades/atendimento';
 import { PacienteService } from '../services/paciente.service';
 import { Paciente } from '../entidades/paciente';
+import { UnidadeService } from '../services/unidade.service';
+import { Unidade } from '../entidades/unidade';
 
 interface possibContagio {
   value: boolean;
@@ -28,34 +30,36 @@ export class CadastrarAtendimentoComponent implements OnInit {
   start: Number;
   atendimento: Atendimento;
   paciente: Paciente;
+  unidade: Unidade;
   isLoading = true;
   tempo: number;
   error = false;
+  pacienteCarregado: Paciente;
 
   constructor(
     private atendimentoService: AtendimentoService,
-    pacienteService: PacienteService,
+    private pacienteService: PacienteService,
+    private unidadeService: PacienteService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute, 
     private router: Router
   ) {
 
     this.registerForm = this.formBuilder.group({
-      nome: ['', Validators.required],
+      unidades: [''],
+      pacientes: [''],
+      data: ['', Validators.required],
       possibCont: ['', Validators.required],
       result1: [''], 
       result2: [''],
+      tempo: ['', Validators.required]
     });
-    route.paramMap.subscribe(
-      (params: ParamMap) => {
-        pacienteService.getPacientePorId(params.get('id')).subscribe(
-          (paciente: Paciente) => {
-            this.paciente = paciente;
-            this.isLoading = false;
-          }
-        );
-      }
-    );
+  }
+
+  getSelectedPaciente(event): void {
+    this.pacienteService
+      .getPacientes()
+      .subscribe((paciente => (this.pacienteCarregado = paciente)));
   }
 
   get possibCont() {
@@ -72,6 +76,8 @@ export class CadastrarAtendimentoComponent implements OnInit {
   ngOnInit() {
     this.start = Date.now();
   }
+
+ 
 
   onSubmit() {
     this.end = Date.now();

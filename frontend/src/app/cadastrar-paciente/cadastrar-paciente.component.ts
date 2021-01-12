@@ -33,12 +33,13 @@ export class CadastrarPacienteComponent implements OnInit {
 
   public pacienteForm = this.formBuilder.group({
     nome: ['', Validators.required],
-    telefone: ['', Validators.required],
     cpf: ['', [Validators.required, Validators.pattern(/^[0-9]{3}.[0-9]{3}.[0-9]{3}[-/][0-9]{2}$/)]],
-    email: ['', Validators.required],
+    idade: ['', Validators.required],
+    telefone: [''],
+    email: [''],
     sexo: ['', Validators.maxLength],
-    peso: ['', Validators.maxLength],
-    altura: ['', Validators.maxLength],
+    peso: [''],
+    altura: [''],
   });
 
   public pacienteEnderecoForm = this.formBuilder.group({
@@ -48,25 +49,17 @@ export class CadastrarPacienteComponent implements OnInit {
     cidade: ['', Validators.required],
   });
 
-  enviarForm() {
-    const paciente: Paciente = {
-      nome: this.nome.value,
-      cpf: this.cpf.value,
-      idade: this.idade.value,
-      telefone: this.telefone.value,
-      email: this.email.value,
-      sexo: this.sexo.value,
-      peso: this.peso.value,
-      altura: this.altura.value,
-     // endereco: this.endereco.value,
-    }
-    this.pacienteService.postPaciente(paciente).subscribe({
-      next: paciente => {
-        this.router.navigate(['../cadastrar-paciente'])
+  submitPaciente() {
+    this.isLoading = true;
+    this.paciente = this.pacienteForm.value;
+    this.paciente.endereco = this.pacienteEnderecoForm.value;
+    this.pacienteService.postPaciente(this.paciente).subscribe(
+      (paciente: Paciente) => {
+        this.isLoading = false;
+        this.router.navigate(['/cadastrar-paciente', {id : paciente.id}]);
       }
-    })
+    );
   }
-
 
   get nome() {
     return this.pacienteForm.get('nome');
