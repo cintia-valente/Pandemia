@@ -35,6 +35,7 @@ export class CadastrarAtendimentoComponent implements OnInit {
   tempo: number;
   error = false;
   pacienteCarregado: Paciente;
+  unidadeCarregada: Unidade;
 
   constructor(
     private atendimentoService: AtendimentoService,
@@ -60,6 +61,12 @@ export class CadastrarAtendimentoComponent implements OnInit {
     this.pacienteService
       .getPacientes()
       .subscribe((paciente => (this.pacienteCarregado = paciente)));
+  }
+
+  getSelectedUnidade(event): void {
+    this.unidadeService
+      .getUnidadePorNome()
+      .subscribe((unidade => (this.unidadeCarregada = unidade)));
   }
 
   get possibCont() {
