@@ -10,7 +10,7 @@ import { Paciente } from '../entidades/paciente';
 import { UnidadeService } from '../services/unidade.service';
 import { Unidade } from '../entidades/unidade';
 
-interface possibContagio {
+interface Contagio {
   value: boolean;
   viewValue: string;
 }
@@ -23,24 +23,28 @@ interface possibContagio {
 export class CadastrarAtendimentoComponent implements OnInit {
 
   registerForm: FormGroup;
-  selectedGender: string;
   selectedContagio: boolean;
   parametroCarregado = false;
   end: Number;
   start: Number;
   atendimento: Atendimento;
-  paciente: Paciente;
-  unidade: Unidade;
+  paciente: Paciente[];
+  unidade: Unidade[];
   isLoading = true;
   tempo: number;
   error = false;
-  pacienteCarregado: Paciente;
-  unidadeCarregada: Unidade;
+  pacienteCarregado: Paciente[];
+  unidadeCarregada: Unidade[];
+
+  contagios: Contagio[] = [
+    {value: true, viewValue: 'Positivo'},
+    {value: false, viewValue: 'Negativo'}
+  ];
 
   constructor(
     private atendimentoService: AtendimentoService,
     private pacienteService: PacienteService,
-    private unidadeService: PacienteService,
+    private unidadeService: UnidadeService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute, 
     private router: Router
@@ -57,15 +61,15 @@ export class CadastrarAtendimentoComponent implements OnInit {
     });
   }
 
-  getSelectedPaciente(event): void {
+  getSelectedPaciente(): void {
     this.pacienteService
       .getPacientes()
       .subscribe((paciente => (this.pacienteCarregado = paciente)));
   }
 
-  getSelectedUnidade(event): void {
+  getSelectedUnidade(): void {
     this.unidadeService
-      .getUnidadePorNome()
+      .getUnidades()
       .subscribe((unidade => (this.unidadeCarregada = unidade)));
   }
 
@@ -80,33 +84,60 @@ export class CadastrarAtendimentoComponent implements OnInit {
     return this.registerForm.get('result2').value;
   }
 
-  ngOnInit() {
-    this.start = Date.now();
+  carregarLocalStorage() {
+    const unitId = localStorage.getItem('unidades');
+    this.registerForm.get('unidades').setValue(unitId);
+
+    const idPaciente = localStorage.getItem('pacientes');
+    this.registerForm.get('pacientes').setValue(idPaciente);
+
+    const dataAtendimento = localStorage.getItem('data');
+    this.registerForm.get('data').setValue(dataAtendimento);
+
+    const possibCont = localStorage.getItem('possibCont');
+    this.registerForm.get('possibCont').setValue(possibCont);
+
+    const result1 = localStorage.getItem('result1');
+    this.registerForm.get('result1').setValue(result1);
+
+    const result2 = localStorage.getItem('result2');
+    this.registerForm.get('result2').setValue(result2);
+
+    const tempoAtendimento = localStorage.getItem('tempo');
+    this.registerForm.get('tempo').setValue(tempoAtendimento);
   }
 
- 
+  salvarLocalStorage(key:string): void {
+    localStorage.setItem(key, this.registerForm.get(key).value);
+  }
+  
+  ngOnInit() {
+    this.start = Date.now();
+    this.getSelectedPaciente();
+    this.getSelectedUnidade();
+    this.carregarLocalStorage();
+  }
 
-  onSubmit() {
+  submitAtendimento() {
     this.end = Date.now();
     const data = new Date();
-    console.log(data);
   
     let atendimento: Atendimento = {
-      idUnidade: localStorage.getItem('unitid'),
-      idAtendimento: localStorage.getItem('atendid'),
-      data: data,
-      paciente: localStorage.getItem('idPaciente'),
-      tempo: this.tempo,
-      possibContagio: this.possibCont,
-      teste1: this.result1
-
+      idUnidade: this.registerForm.get('unidades').value,
+      data: this.registerForm.get('data').value,
+      paciente: this.registerForm.get('pacientes').value,
+      tempo: this.registerForm.get('tempo').value,
+      possibContagio: this.registerForm.get('possibCont').value,
+      teste1: this.registerForm.get('result1').value,
+      teste2: this.registerForm.get('result2').value
     };
     if(this.result2 == "") {
 
     }else {
       atendimento.teste2 = this.result2 == "true";
     }
-
+    
+    console.log(atendimento);
     this.isLoading = true;
     this.atendimentoService.postAtendimento(atendimento).subscribe(
       () => {

@@ -50,7 +50,7 @@ export class AtendimentoService {
   }
 
   postAtendimento(atendimento: Atendimento): Observable<Atendimento> {
-    return this.http.post<Atendimento>(environment.apiUrl + '/authunid', atendimento, this.options).pipe(
+    return this.http.post<Atendimento>(environment.apiUrl + '/authatendimento', atendimento, this.options).pipe(
       catchError(this.handleError)
     );
   }

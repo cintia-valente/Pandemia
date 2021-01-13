@@ -2,59 +2,57 @@
 <div class="conteudo">
     <div class="row justify-content-center">
         <div class="col-xl-8" *ngIf="isLoading">
-        <div class="titulo">Cadastro de Atendimentos</div>
-        <form class="d-flex flex-column" [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
-            <div>
-                <label> Unidade: </label>
-                <select formControlName="unidades" id="unidade" (selectionChange)="getSelectedUnidade($event)">
-                    <option value="" selected>  Selecione....  </option>
-                    <option *ngFor="let unidade of unidade" [value]="unidade._id">{{unidade.nome}}</option>
-                </select>
-            </div>
-    
-            <div>
-                <label> Paciente: </label>
-                <select formControlName="pacientes" id="paciente" (selectionChange)="getSelectedPaciente($event)">
-                    <option value="" selected>  Selecione....  </option>
-                    <option *ngFor="let paciente of paciente" [value]="paciente._id">{{paciente.nome}}</option>
-                </select>
-            </div>    
-            <div>
-                <label> Data: </label>
-                <label><input type="date" id="data" formControlName="data"></label>
-            </div>   
-            <div>
-                <label for="pacienteContagio"> Possibilidade de Contágio*: </label>
-                <select formControlName="possibCont" id="possibCont" required>
-                    <option value="true">Positivo</option>
-                    <option value="false">Negativo</option>
-                </select>
-            </div>
-        
-            <div>
-                <label> Resultado teste 1: </label>
-                <select formControlName="result1" id="result1">
-                    <option value="true">Positivo</option>
-                    <option value="false">Negativo</option>
-                </select>
-        
-                <label> Resultado teste 2: </label>
-                <select formControlName="result2" id="result2">
-                    <option value="true">Ainda não testado</option>
-                    <option value="true">Positivo</option>
-                    <option value="false">Negativo</option>
-                </select>
-            </div> 
-            <div>
-                <label> Tempo*: </label>
-                <input placeholder="Tempo" type="number" id="tempo" formControlName="tempo" min=0 required>
-            </div>   
-            <div class="registrar"  [disabled]="!registerForm.valid">
-                <button type="submit" >
-                    Entrar
-                </button>
-            </div>
-        </form>
+            <div class="titulo">Cadastro de Atendimentos</div>
+            <form [formGroup]="registerForm" (ngSubmit)="submitAtendimento()">
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="inputUnidade">Unidade: </label>
+                        <select formControlName="unidades" id="unidade" (selectionChange)="getSelectedUnidade()" (blur)="salvarLocalStorage('unidades')" class="form-control">
+                            <option value="" selected> Selecione.... </option>
+                            <option *ngFor="let unidade of unidadeCarregada" [value]="unidade._id">{{unidade.nome}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputPaciente">Paciente: </label>
+                        <select formControlName="pacientes" id="paciente" (selectionChange)="getSelectedPaciente()" (blur)="salvarLocalStorage('unidades')" class="form-control">
+                            <option value="" selected> Selecione.... </option>
+                            <option *ngFor="let paciente of pacienteCarregado" [value]="paciente._id">{{paciente.nome}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputData">Data</label>
+                        <input type="date" class="form-control" id="data" placeholder="Email">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputContagio">Possibilidade de Contágio*: </label>
+                        <select [(ngModel)]="selectedContagio" formControlName="possibCont" id="possibCont" class="form-control">
+                            <option value="" selected> Selecione.... </option>
+                            <option *ngFor="let contagio of contagios" [value]="contagio.value">
+                                {{ contagio.viewValue }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-md-6" *ngIf = "selectedContagio">
+                    <label> Resultado teste 1: </label>
+                    <select formControlName="result1" id="resul1" class="form-control">
+                        <option value="" selected> Selecione.... </option>
+                        <option *ngFor="let contagio of contagios" [value]="contagio.value">{{ contagio.viewValue }}</option>
+                    </select>
+            
+                    <label> Resultado teste 2: </label>
+                    <select formControlName="result2" id="result2" class="form-control">
+                        <option value="" selected> Selecione.... </option>
+                        <option *ngFor="let contagio of contagios" [value]="contagio.value">{{ contagio.viewValue }}</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputTempo">Tempo</label>
+                    <input type="number" class="form-control" formControlName="tempo" id="tempo" placeholder="Tempo" (blur)="salvarLocalStorage('unidades')" required>
+                </div>
+                <button type="submit" class="btn btn-primary" (click)="submitAtendimento()">Cadastrar</button>
+            </form>
         </div>
     </div>
-</div>
