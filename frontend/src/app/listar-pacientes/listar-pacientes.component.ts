@@ -16,8 +16,6 @@ export class ListarPacientesComponent implements OnInit {
   paciente: Paciente[];
   unidade: Unidade[];
   selectedUnidade: string;
-  //displayedColumns = ['nome', 'cpf', 'idade', 'telefone', 'email', 'sexo', 
-    //                  'peso', 'altura', 'rua', 'numero', 'bairro', 'cidade'];
   
   constructor(
     private unidadeService: UnidadeService,
