@@ -61,7 +61,7 @@ export class CadastrarAtendimentoComponent implements OnInit {
       pacientes: [''],
       data: ['', Validators.required],
       possibContagio: ['', Validators.required],
-      teste1: [''], 
+      teste1: ['', Validators.required], 
       teste2: [''],
       tempo: ['', Validators.required]
     });

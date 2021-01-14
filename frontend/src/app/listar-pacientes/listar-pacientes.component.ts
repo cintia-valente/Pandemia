@@ -4,6 +4,8 @@ import { PacienteService } from '../services/paciente.service';
 import { Paciente } from '../entidades/paciente';
 import { UnidadeService } from '../services/unidade.service';
 import { Unidade } from '../entidades/unidade';
+import { AtendimentoService } from '../services/atendimento.service';
+import { Atendimento } from '../entidades/atendimento';
 
 @Component({
   selector: 'app-listar-pacientes',
@@ -19,13 +21,14 @@ export class ListarPacientesComponent implements OnInit {
   
   constructor(
     private unidadeService: UnidadeService,
+    private atendimentoService: AtendimentoService,
     private formBuilder: FormBuilder,
     private pacienteService: PacienteService
   ) {
 
     this.listForm = this.formBuilder.group({
-      unidades: ['', Validators.required],
-      pacientes: ['', Validators.required],
+      unidade: ['', Validators.required],
+      paciente: ['', Validators.required],
       data: [''],
       possibContagio: ['', Validators.required],
       teste1: [''], 
@@ -46,13 +49,18 @@ export class ListarPacientesComponent implements OnInit {
 
   submit(): void {
     this.paciente = [];
-      this.pacienteService.getPacientes().subscribe({
-        next: pacienteEncontrado => {
+      this.atendimentoService.getAtendimentoPorUnidade(this.listForm.get('unidade').value).subscribe({
+        next: atendimentosEncontrados => {
+          atendimentosEncontrados.forEach(atendimento => {
+            const atendimentoPaciente = atendimento.paciente as Paciente
+            console.log(atendimento)
           // Verifica se o paciente já está na lista para adicionar
-          if (this.paciente.every(paciente => paciente.id !== pacienteEncontrado.id)){
-              this.paciente.unshift(pacienteEncontrado);
+          if (this.paciente.every(paciente => paciente._id !== atendimentoPaciente._id)){
+              this.paciente.unshift(atendimentoPaciente);
+              console.log(atendimento)
           }
-        },
-      });
-    }
+        });
+      }, 
+    });
   }
+}

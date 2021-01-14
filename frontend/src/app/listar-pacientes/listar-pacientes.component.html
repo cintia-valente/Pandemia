@@ -6,8 +6,9 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="inputUnidade">Unidade*: </label>
-                    <select [(ngModel)]="selectedUnidade" formControlName="unidade" id="unidade"
-                        (selectionChange)="getSelectedUnidade()" class="form-control" required>
+                    <select (change)="submit()" [(ngModel)]="selectedUnidade" formControlName="unidade" id="unidade"
+                        (selectionChange)="getSelectedUnidade()" class="form-control" 
+                        [ngClass]="{'is-invalid':listForm.get('unidade').touched && listForm.get('unidade').invalid}" required>
                         <option value="" selected> Selecione.... </option>
                         <option *ngFor="let unidade of unidade" [value]="unidade._id">{{unidade.nome}}
                         </option>
@@ -22,7 +23,6 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
                     <th>
                         Nome
                     </th>
@@ -63,12 +63,42 @@
             </thead>
 
             <tbody>
-                <tr *ngFor="let paciente of paciente let i = index">
+                <tr *ngFor="let paciente of paciente">
                     <td class="py-1">
                         {{paciente.nome}}
                     </td>
                     <td class="py-1">
                         {{paciente.cpf}}
+                    </td>
+                    <td class="py-1">
+                        {{paciente.idade}}
+                    </td>
+                    <td class="py-1">
+                        {{paciente.telefone}}
+                    </td>
+                    <td class="py-1">
+                        {{paciente.email}}
+                    </td>
+                    <td class="py-1">
+                        {{paciente.sexo}}
+                    </td>
+                    <td class="py-1">
+                        {{paciente.peso}}
+                    </td>
+                    <td class="py-1">
+                        {{paciente.altura}}
+                    </td>
+                    <td class="py-1">
+                        {{paciente.endereco.rua}}
+                    </td>
+                    <td class="py-1">
+                        {{paciente.endereco.numero}}
+                    </td>
+                    <td class="py-1">
+                        {{paciente.endereco.bairro}}
+                    </td>
+                    <td class="py-1">
+                        {{paciente.endereco.cidade}}
                     </td>
                 </tr>
             </tbody>

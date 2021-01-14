@@ -23,9 +23,8 @@
                             required>
                         <div *ngIf="pacienteForm.get('cpf').errors" class="invalid-feedback">
                             <div *ngIf="pacienteForm.get('cpf').errors.required"> Campo obrigatório. Por favor, Informe
-                                um CPF.</div>
-                            <div
-                                *ngIf="pacienteForm.get('cpf').errors.cpfInvalido && !pacienteForm.get('cpf').errors.required">
+                                um CPF válido.</div>
+                            <div *ngIf="pacienteForm.get('cpf').errors.cpfInvalido && !pacienteForm.get('cpf').errors.required">
                                 CPF inválido.</div>
                         </div>
                     </div>
@@ -81,8 +80,8 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputRua">Rua:</label>
-                                <input type="text" class="form-control" formControlName="rua" id="rua" placeholder="Rua"
-                                    (blur)="salvarLocalStorage('rua')">
+                                <input type="text" class="form-control" formControlName="rua" id="rua" 
+                                placeholder="Rua" (blur)="salvarLocalStorage('rua')">
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="inputNumero">Número:</label>
@@ -100,7 +99,6 @@
                                 <input type="text" class="form-control" formControlName="cidade" id="cidade"
                                     placeholder="Cidade" (blur)="salvarLocalStorage('cidade')">
                             </div>
-
                         </div>
                     </form>
                 </div>
