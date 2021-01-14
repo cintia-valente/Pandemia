@@ -1,67 +1,116 @@
 <app-top-bar></app-top-bar>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-xl-8"  *ngIf="!isLoading">
+        <div class="col-xl-8" *ngIf="!isLoading">
             <div class="titulo">Cadastro de Pacientes</div>
-            <form  [formGroup]="pacienteForm" (ngSubmit)="submitPaciente()">
-                <div>
-                    <label>Nome do paciente*:</label>
-                    <input type="text" id="nome" formControlName="nome" required maxlength="100">
-                </div>
-                <div>
-                    <label>CPF*:</label>
-                    <input type="text" id="cpf" formControlName="cpf" required>
-                </div>
-                <div>
-                    <label>Idade*:</label>
-                    <input type="number" id="idade" formControlName="idade" required>
-                </div>
-                <div>
-                 <div>
-                    <label>Telefone:</label>
-                    <input type="number" id="telefone" formControlName="telefone">
-                </div>
-                <div>
-                    <label>Email:</label>
-                    <input type="text" id="email" formControlName="email">
-                </div>
-                <div>
-                    <label for="pacienteSexo">Sexo*: </label>
-                    <select [(ngModel)]="selectedGender" formControlName="sexo" id="sexo" required>
-                        <option value="" selected> Selecione.... </option>
-                        <option *ngFor="let gender of genders" [value]="gender.value">{{ gender.viewValue }}</option>
-                    </select>
-                </div>
-                <div>
-                    <label>Peso:</label>
-                    <input type="number" id="peso" formControlName="peso">
-                </div>
-                <div>
-                    <label>Altura:</label>
-                    <input type="number" id="altura" formControlName="altura">
-                </div>
-                <h2>Endereço</h2>
-                <div [formGroup] = "pacienteEnderecoForm ">
-                    <label> Rua: </label>
-                    <input type="text" id= "rua" formControlName='rua' minlength="1" maxlength="100" >
-                    <label> Número: </label>
-                    <input type="number" id= "numero" formControlName='numero' minlength="1" maxlength="100">
-                </div>
-                <div [formGroup] = "pacienteEnderecoForm ">
-                    <label> Bairro: </label>
-                    <input type="text" id= "bairro" formControlName='bairro' minlength="1" maxlength="100">
-                    <label> Cidade: </label>
-                    <input type="text" id= "cidade" formControlName='cidade' minlength="1" maxlength="100">
-                </div>
-        
-                    <div class="registrar">
-                        <button type="submit" (click)="submitPaciente()">
-                            Entrar
-                        </button>
+            <form [formGroup]="pacienteForm" (ngSubmit)="submitPaciente()">
+                <div class="form-row">
+                    <div class="form-group col-md-8">
+                        <label for="inputNome">Nome*:</label>
+                        <input type="text" class="form-control" formControlName="nome" id="nome" placeholder="Nome"
+                            (blur)="salvarLocalStorage('nome')"
+                            [ngClass]="{'is-invalid':pacienteForm.get('nome').touched && pacienteForm.get('nome').invalid}"
+                            required>
+                        <div class="invalid-feedback">
+                            Campo obrigatório. Por favor, informe um nome.
+                        </div>
                     </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputCPF">CPF*:</label>
+                        <input type="text" class="form-control" id="cpf" mask="000.000.000-00" formControlName="cpf"
+                            placeholder="xxx.xxx.xxx-xx" (blur)="salvarLocalStorage('cpf')"
+                            [ngClass]="{'is-invalid':pacienteForm.get('cpf').touched && pacienteForm.get('cpf').invalid}"
+                            required>
+                        <div *ngIf="pacienteForm.get('cpf').errors" class="invalid-feedback">
+                            <div *ngIf="pacienteForm.get('cpf').errors.required"> Campo obrigatório. Por favor, Informe
+                                um CPF.</div>
+                            <div
+                                *ngIf="pacienteForm.get('cpf').errors.cpfInvalido && !pacienteForm.get('cpf').errors.required">
+                                CPF inválido.</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputIdade">Idade*:</label>
+                        <input type="texto" class="form-control" formControlName="idade" id="idade" placeholder="Idade"
+                            (blur)="salvarLocalStorage('idade')"
+                            [ngClass]="{'is-invalid':pacienteForm.get('idade').touched && pacienteForm.get('idade').invalid}"
+                            required>
+                        <div class="invalid-feedback">
+                            Campo obrigatório. Por favor, informe uma idade.
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="inputTelefone">Telefone:</label>
+                            <input type="text" class="form-control" formControlName="telefone" id="telefone"
+                                placeholder="Telefone" (blur)="salvarLocalStorage('telefone')">
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="inputEmail">Email:</label>
+                            <input type="text" class="form-control" formControlName="email" id="email"
+                                placeholder="exemplo@email.com" (blur)="salvarLocalStorage('email')">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="inputSexo">Sexo*: </label>
+                            <select [(ngModel)]="selectedGender" formControlName="sexo" id="sexo" class="form-control"
+                                (blur)="salvarLocalStorage('sexo')" class="form-control"
+                                [ngClass]="{'is-invalid':pacienteForm.get('sexo').touched && pacienteForm.get('sexo').invalid}"
+                                required>
+                                <option value="" selected> Selecione.... </option>
+                                <option *ngFor="let gender of genders" [value]="gender.value">{{ gender.viewValue }}
+                                </option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Campo obrigatório. Por favor, selecione uma opção.
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputPeso">Peso:</label>
+                            <input type="number" class="form-control" formControlName="peso" id="peso"
+                                placeholder="Peso" (blur)="salvarLocalStorage('peso')">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputAltura">Altura:</label>
+                            <input type="text" class="form-control" formControlName="altura" id="altura"
+                                placeholder="Altura" (blur)="salvarLocalStorage('altura')">
+                        </div>
+                    </div>
+                    <form [formGroup]="pacienteEnderecoForm" (ngSubmit)="submitPaciente()">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputRua">Rua:</label>
+                                <input type="text" class="form-control" formControlName="rua" id="rua" placeholder="Rua"
+                                    (blur)="salvarLocalStorage('rua')">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="inputNumero">Número:</label>
+                                <input type="number" class="form-control" formControlName="numero" id="numero"
+                                    placeholder="Numero" (blur)="salvarLocalStorage('numero')">
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="inputBairro">Bairro:</label>
+                                <input type="text" class="form-control" formControlName="bairro" id="bairro"
+                                    placeholder="Bairro" (blur)="salvarLocalStorage('bairro')">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputCidade">Cidade:</label>
+                                <input type="text" class="form-control" formControlName="cidade" id="cidade"
+                                    placeholder="Cidade" (blur)="salvarLocalStorage('cidade')">
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+                <div class="registrar">
+                    <button type="submit" class="btn btn-primary" [disabled]="!pacienteForm.valid"
+                        (click)="submitPaciente()">
+                        Cadastrar
+                    </button>
                 </div>
             </form>
         </div>
     </div>
 </div>
-

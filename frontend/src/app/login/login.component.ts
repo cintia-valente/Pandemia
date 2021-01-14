@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
   getPassword() {return this.loginForm.get('password'); }
 
   ngOnInit() {
+  
   }
   
   onSubmit() {
@@ -46,8 +47,10 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['cadastrar-atendimento']);
       });
     }catch(err){
-      alert('erro');
+      alert('Falha ao logar');
       console.log(err);
     }
   }
 }
+
+

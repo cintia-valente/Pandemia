@@ -1,0 +1,77 @@
+<app-top-bar></app-top-bar>
+<div class="row justify-content-center">
+    <div class="col-xl-8">
+        <div class="titulo">Visualizar Pacientes</div>
+        <form [formGroup]="listForm" (ngSubmit)="submit()">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="inputUnidade">Unidade*: </label>
+                    <select [(ngModel)]="selectedUnidade" formControlName="unidade" id="unidade"
+                        (selectionChange)="getSelectedUnidade()" class="form-control" required>
+                        <option value="" selected> Selecione.... </option>
+                        <option *ngFor="let unidade of unidade" [value]="unidade._id">{{unidade.nome}}
+                        </option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Campo obrigatório. Por favor, selecione uma unidade.
+                    </div>
+                </div>
+            </div>
+        </form>
+        <h4>Pacientes:</h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th>
+                        Nome
+                    </th>
+                    <th>
+                        CPF
+                    </th>
+                    <th>
+                        Idade
+                    </th>
+                    <th>
+                        Telefone
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Sexo
+                    </th>
+                    <th>
+                        Peso
+                    </th>
+                    <th>
+                        Altura
+                    </th>
+                    <th>
+                        Rua
+                    </th>
+                    <th>
+                        Número
+                    </th>
+                    <th>
+                        Bairro
+                    </th>
+                    <th>
+                        Cidade
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let paciente of paciente let i = index">
+                    <td class="py-1">
+                        {{paciente.nome}}
+                    </td>
+                    <td class="py-1">
+                        {{paciente.cpf}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

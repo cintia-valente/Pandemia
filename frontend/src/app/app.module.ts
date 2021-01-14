@@ -13,6 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { CadastrarAtendimentoComponent } from './cadastrar-atendimento/cadastrar-atendimento.component';
 import { CadastrarPacienteComponent } from './cadastrar-paciente/cadastrar-paciente.component';
+import { ListarPacientesComponent } from './listar-pacientes/listar-pacientes.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CadastrarPacienteComponent } from './cadastrar-paciente/cadastrar-pacie
     LoginComponent,
     TopBarComponent,
     CadastrarAtendimentoComponent,
-    CadastrarPacienteComponent
+    CadastrarPacienteComponent,
+    ListarPacientesComponent
   ],
   imports: [
     BrowserModule,

@@ -36,9 +36,15 @@ export class CadastrarAtendimentoComponent implements OnInit {
   pacienteCarregado: Paciente[];
   unidadeCarregada: Unidade[];
 
+  possibilidadeContagio:  Contagio[] = [
+    {value: true, viewValue: 'Positivo'},
+    {value: false, viewValue: 'Negativo'},
+  ];
+
   contagios: Contagio[] = [
     {value: true, viewValue: 'Positivo'},
-    {value: false, viewValue: 'Negativo'}
+    {value: false, viewValue: 'Negativo'},
+    {value: false, viewValue: 'Não realizado'},
   ];
 
   constructor(
@@ -54,11 +60,23 @@ export class CadastrarAtendimentoComponent implements OnInit {
       unidades: [''],
       pacientes: [''],
       data: ['', Validators.required],
-      possibCont: ['', Validators.required],
-      result1: [''], 
-      result2: [''],
+      possibContagio: ['', Validators.required],
+      teste1: [''], 
+      teste2: [''],
       tempo: ['', Validators.required]
     });
+    
+  }
+
+  get possibContagio() {
+    return this.registerForm.get('possibContagio').value == 'true';
+  }
+
+  get teste1() {
+    return this.registerForm.get('teste1').value == 'true';
+  }
+  get teste2() {
+    return this.registerForm.get('teste2').value;
   }
 
   getSelectedPaciente(): void {
@@ -72,36 +90,32 @@ export class CadastrarAtendimentoComponent implements OnInit {
       .getUnidades()
       .subscribe((unidade => (this.unidadeCarregada = unidade)));
   }
-
-  get possibCont() {
-    return this.registerForm.get('possibCont').value == 'true';
-  }
-
-  get result1() {
-    return this.registerForm.get('result1').value == 'true';
-  }
-  get result2() {
-    return this.registerForm.get('result2').value;
+  
+  ngOnInit() {
+    this.getSelectedPaciente();
+    this.getSelectedUnidade();
+    this.carregarLocalStorage();
+    this.start = Date.now();
   }
 
   carregarLocalStorage() {
     const unitId = localStorage.getItem('unidades');
     this.registerForm.get('unidades').setValue(unitId);
 
-    const idPaciente = localStorage.getItem('pacientes');
-    this.registerForm.get('pacientes').setValue(idPaciente);
+    const paciente = localStorage.getItem('pacientes');
+    this.registerForm.get('pacientes').setValue(paciente);
 
     const dataAtendimento = localStorage.getItem('data');
     this.registerForm.get('data').setValue(dataAtendimento);
 
-    const possibCont = localStorage.getItem('possibCont');
-    this.registerForm.get('possibCont').setValue(possibCont);
+    const possibContagio = localStorage.getItem('possibContagio');
+    this.registerForm.get('possibContagio').setValue(possibContagio);
 
-    const result1 = localStorage.getItem('result1');
-    this.registerForm.get('result1').setValue(result1);
+    const teste1 = localStorage.getItem('teste1');
+    this.registerForm.get('teste1').setValue(teste1);
 
-    const result2 = localStorage.getItem('result2');
-    this.registerForm.get('result2').setValue(result2);
+    const teste2 = localStorage.getItem('teste2');
+    this.registerForm.get('teste2').setValue(teste2);
 
     const tempoAtendimento = localStorage.getItem('tempo');
     this.registerForm.get('tempo').setValue(tempoAtendimento);
@@ -109,13 +123,6 @@ export class CadastrarAtendimentoComponent implements OnInit {
 
   salvarLocalStorage(key:string): void {
     localStorage.setItem(key, this.registerForm.get(key).value);
-  }
-  
-  ngOnInit() {
-    this.start = Date.now();
-    this.getSelectedPaciente();
-    this.getSelectedUnidade();
-    this.carregarLocalStorage();
   }
 
   submitAtendimento() {
@@ -127,27 +134,27 @@ export class CadastrarAtendimentoComponent implements OnInit {
       data: this.registerForm.get('data').value,
       paciente: this.registerForm.get('pacientes').value,
       tempo: this.registerForm.get('tempo').value,
-      possibContagio: this.registerForm.get('possibCont').value,
-      teste1: this.registerForm.get('result1').value,
-      teste2: this.registerForm.get('result2').value
+      possibContagio: this.registerForm.get('possibContagio').value,
+      teste1: this.registerForm.get('teste1').value,
+      teste2: this.registerForm.get('teste2').value
     };
-    if(this.result2 == "") {
+    if(this.teste2 == "") {
 
     }else {
-      atendimento.teste2 = this.result2 == "true";
+      atendimento.teste2 = this.teste2 == "true";
     }
     
     console.log(atendimento);
-    this.isLoading = true;
+   //this.isLoading = true;
     this.atendimentoService.postAtendimento(atendimento).subscribe(
       () => {
         this.isLoading = false;
         this.router.navigate(['/cadastrar-atendimento', {saved: true}]);
+        alert('Consulta cadastrada com sucesso');
       },
       () => {
         this.error = true;
       }
     );
-
-  }
+  } 
 }

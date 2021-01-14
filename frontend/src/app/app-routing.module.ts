@@ -3,13 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { CadastrarAtendimentoComponent } from './cadastrar-atendimento/cadastrar-atendimento.component';
 import { CadastrarPacienteComponent } from './cadastrar-paciente/cadastrar-paciente.component';
+import { ListarPacientesComponent } from './listar-pacientes/listar-pacientes.component';
 
 import { AuthGuardService } from './guards/auth-guard.service';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'cadastrar-atendimento', component: CadastrarAtendimentoComponent, canActivate: [AuthGuardService], canLoad: [AuthGuardService]},
-  { path: 'cadastrar-paciente', component: CadastrarPacienteComponent, canActivate: [AuthGuardService], canLoad: [AuthGuardService]}
+  { path: 'cadastrar-paciente', component: CadastrarPacienteComponent, canActivate: [AuthGuardService], canLoad: [AuthGuardService]},
+  { path: 'listar-pacientes', component: ListarPacientesComponent, canActivate: [AuthGuardService], canLoad: [AuthGuardService]},
 ];
 
 @NgModule({

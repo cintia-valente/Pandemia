@@ -43,11 +43,57 @@ export class CadastrarPacienteComponent implements OnInit {
   });
 
   public pacienteEnderecoForm = this.formBuilder.group({
-    rua: ['', Validators.required],
-    numero: ['', Validators.required],
-    bairro: ['', Validators.required],
-    cidade: ['', Validators.required],
+    rua: [''],
+    numero: [''],
+    bairro: [''],
+    cidade: [''],
   });
+
+  carregarLocalStorage() {
+    const nome = localStorage.getItem('nome');
+    this.pacienteForm.get('nome').setValue(nome);
+
+    const cpf = localStorage.getItem('cpf');
+    this.pacienteForm.get('cpf').setValue(cpf);
+
+    const idade = localStorage.getItem('idade');
+    this.pacienteForm.get('idade').setValue(idade);
+
+    const telefone = localStorage.getItem('telefone');
+    this.pacienteForm.get('telefone').setValue(telefone);
+
+    const email = localStorage.getItem('email');
+    this.pacienteForm .get('email').setValue(email);
+
+    const sexo = localStorage.getItem('sexo');
+    this.pacienteForm.get('sexo').setValue(sexo);
+
+    const peso = localStorage.getItem('peso');
+    this.pacienteForm.get('peso').setValue(peso);
+
+    const altura = localStorage.getItem('altura');
+    this.pacienteForm.get('altura').setValue(altura);
+
+    const rua = localStorage.getItem('rua');
+    this.pacienteEnderecoForm.get('rua').setValue(rua);
+
+    const numero = localStorage.getItem('numero');
+    this.pacienteEnderecoForm.get('numero').setValue(numero);
+
+    const bairro = localStorage.getItem('bairro');
+    this.pacienteEnderecoForm.get('bairro').setValue(bairro);
+
+    const cidade = localStorage.getItem('cidade');
+    this.pacienteEnderecoForm.get('cidade').setValue(cidade);
+  }
+
+  salvarLocalStorage(key:string): void {
+    localStorage.setItem(key, this.pacienteForm.get(key).value);
+  }
+
+  ngOnInit() {
+    this.carregarLocalStorage();
+  }
 
   submitPaciente() {
     this.isLoading = true;
@@ -56,7 +102,8 @@ export class CadastrarPacienteComponent implements OnInit {
     this.pacienteService.postPaciente(this.paciente).subscribe(
       (paciente: Paciente) => {
         this.isLoading = false;
-        this.router.navigate(['/cadastrar-paciente', {id : paciente.id}]);
+        this.router.navigate(['/cadastrar-paciente']);
+        alert('Paciente cadastrado com sucesso');
       }
     );
   }
@@ -108,9 +155,4 @@ export class CadastrarPacienteComponent implements OnInit {
   get cidade() {
     return this.pacienteEnderecoForm.get('cidade');
   }
-
-  ngOnInit() {
-  }
-
-
 }
