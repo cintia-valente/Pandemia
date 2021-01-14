@@ -89,19 +89,6 @@ describe('Testes unitários de atendimentoRepositorio', () => {
         });
     });
 
-    /*describe('postAtendimento()', () => {
-        test('Deve inserir um atendimento', async () => {
-            const res = await AtendimentoRepositorio.postAtendimento(mockAtendimento);
-            //expect(res.idAtendimento).toEqual(mockAtendimento.idAtendimento);
-            expect(res.idUnidade).toEqual(mockAtendimento.idUnidade);
-            expect(res.paciente).toEqual(mockAtendimento.paciente);
-            expect(res.possibContagio).toEqual(mockAtendimento.possibContagio);
-            expect(res.teste1).toEqual(mockAtendimento.teste1);
-            expect(res.teste2).toEqual(mockAtendimento.teste2);
-            expect(res.tempo).toEqual(mockAtendimento.tempo);
-        });
-    });*/
-
     describe('patchAtendimento()', () => {
         test('Deve alterar uma atendimento', async () => {
             const mockAtendimentoAlterar = jest.spyOn(AtendimentoRepositorio, 'patchAtendimento')

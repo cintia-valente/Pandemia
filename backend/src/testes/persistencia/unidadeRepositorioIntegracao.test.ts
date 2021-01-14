@@ -46,12 +46,6 @@ describe('Testes de integração de UnidadeRepositorio', () => {
     });
 
     describe('getUnidadePorId', () => {
-        /*test('Deve retornar uma unidade', async () => {
-            const UnidadeProcurada = await UnidadeRepositorio.getUnidadePorId('idUnidade');
-            expect(UnidadeProcurada).toHaveProperty('1');
-            expect(UnidadeProcurada).toHaveProperty('Unidade A');
-        });*/
-
         test('Deve apresentar uma exception ao buscar por id inválido', async () => {
             const idInvalido = -0;
             const result = async () => { await UnidadeRepositorio.getUnidadePorId('idInvalido') };
@@ -76,27 +70,9 @@ describe('Testes de integração de UnidadeRepositorio', () => {
             expect(unidade.idUnidade).toEqual(unidadeValida.idUnidade);
             expect(unidade.nome).toEqual(unidadeValida.nome);
         });
-
-        /*test('Deve apresentar erro ao inserir nome invalido', async () => {
-            const insercao = async () => { await UnidadeRepositorio.postUnidade(unidadeNomeInvalido) }
-            await expect(insercao).rejects.toThrow();
-        });*/
     });
 
     describe('patchUnidade()', () => {
-        /*test('Deve retornar uma unidade ', async () => {
-            const UnidadeID = await informacaoParaTeste();
-            const insereUnidadeValida =
-            {
-                id: "3",
-                nome: "Unidade X",
-            }
-
-            const Unidade = await UnidadeRepositorio.patchUnidade("3", insereUnidadeValida);
-            expect(Unidade.idUnidade).toEqual(insereUnidadeValida.id);
-            expect(Unidade.nome).toEqual(insereUnidadeValida.nome);
-        });*/
-
         test('Deve apresentar erro ao passar id invalido na alteração', async () => {
             const idInvalido = -0;
             const Unidade = await informacaoParaTeste();

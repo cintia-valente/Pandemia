@@ -23,7 +23,7 @@ export class AtendimentoRepositorio {
     //busca atendimentos de uma unidade por id
     static async getAtendimentoUnidadePorId(id: string, andamento?: boolean): Promise<Atendimento[]> {
         let where = andamento ? { "resultTest2": undefined } : {};
-        let atendimentos = await AtendimentoModel.find(where).populate("paciente").where("id").equals(id).exec();
+        let atendimentos = await AtendimentoModel.find(where).populate('paciente').where('idUnidade').equals(id).exec();
         return atendimentos;
     }
 

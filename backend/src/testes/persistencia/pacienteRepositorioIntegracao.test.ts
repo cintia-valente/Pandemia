@@ -44,52 +44,23 @@ describe('Testes de integração de PacienteRepositorio', () => {
             expect(result).toHaveLength(3);
         });
     });
-});
 
-describe('getPacientePorId', () => {
-    /*test('Deve retornar um paciente', async () => {
-        const paciente = await informacaoParaTeste();
-        const pacienteProcurado =  await PacienteRepositorio.getPacientePorId('paciente[0]._id');
-        expect(pacienteProcurado).toHaveProperty('nome', 'Mia Colluci');
-        expect(pacienteProcurado).toHaveProperty('cpf' , '111.254.355-87');
-        expect(pacienteProcurado).toHaveProperty('idade', 17);
-        expect(pacienteProcurado).toHaveProperty('telefone', '95784264');
-        expect(pacienteProcurado).toHaveProperty('email' , 'barbie@colluci.com');
-        expect(pacienteProcurado).toHaveProperty('sexo' , 'F');
-        expect(pacienteProcurado).toHaveProperty('peso' , 50);
-        expect(pacienteProcurado).toHaveProperty('altura', 1.60);
-        expect((pacienteProcurado as any).idPaciente).toEqual(paciente[0]._id);
-    });*/
-
-    test('Deve apresentar uma exception ao buscar por idInvalido', async () => {
-        const idInvalido = -0;
-        const result = async () => { await PacienteRepositorio.getPacientePorId('idInvalido') };
-        expect(result).toBeDefined();
-    });
-});
-
-describe('getPacientePorCpf()', () => {
-    /*test('Deve retornar um paciente', async () => {
-        let paciente = await informacaoParaTeste();
-        const pacienteProcurado =  await PacienteRepositorio.getPacientePorCpf(paciente[0].cpf);
-        expect(pacienteProcurado).toHaveProperty('Mia Colluci');
-        expect(pacienteProcurado).toHaveProperty('111.254.355-87');
-        expect(pacienteProcurado).toHaveProperty('17');
-        expect(pacienteProcurado).toHaveProperty('95784264');
-        expect(pacienteProcurado).toHaveProperty('barbie@colluci.com');
-        expect(pacienteProcurado).toHaveProperty('F');
-        expect(pacienteProcurado).toHaveProperty('50');
-        expect(pacienteProcurado).toHaveProperty('1.60');
-
-        expect((pacienteProcurado as any).cpf).toEqual(paciente[0].cpf);
-    });*/
-
-    test('Deve apresentar uma exception ao buscar por CPF inexistente', async () => {
-        const cpfInvalido = 'oo988837';
-        const result = async () => { await PacienteRepositorio.getPacientePorCpf(cpfInvalido) };
-        expect(result).toBeDefined();
+    describe('getPacientePorId', () => {
+        test('Deve apresentar uma exception ao buscar por idInvalido', async () => {
+            const idInvalido = -0;
+            const result = async () => { await PacienteRepositorio.getPacientePorId('idInvalido') };
+            expect(result).toBeDefined();
+        });
     });
 
+    describe('getPacientePorCpf()', () => {
+        test('Deve apresentar uma exception ao buscar por CPF inexistente', async () => {
+            const cpfInvalido = 'oo988837';
+            const result = async () => { await PacienteRepositorio.getPacientePorCpf(cpfInvalido) };
+            expect(result).toBeDefined();
+        });
+    });
+    
     describe('postPaciente()', () => {
         test('Deve inserir um paciente', async () => {
             const paciente = await PacienteRepositorio.postPaciente(pacienteValido);
@@ -124,86 +95,26 @@ describe('getPacientePorCpf()', () => {
     });
 
     describe('patchPaciente()', () => {
-        /*test('Deve retornar um paciente ', async () => {
-            const pacienteID = await informacaoParaTeste();
-            const pacienteValido = 
-            {
-                id: "2",
-                nome: "Lupita Fernandes",
-                cpf: "576.445.124-47",
-                idade: 17,
-                telefone: "947756352",
-                email: "lupi@fernandes.com",
-                sexo: "F",
-                peso: 50,
-                altura: 1.60,
-                endereco: {
-                    rua: "PP",
-                    numero: 73,
-                    bairro: "DEBEB",
-                    cidade: "Mexico"
-                },
-            }
-
-            const paciente = await PacienteRepositorio.patchPaciente("2", pacienteValido);
-            expect(paciente.id).toEqual(pacienteValido.id);
-            expect(paciente.nome).toEqual(pacienteValido.nome);
-            expect(paciente.cpf).toEqual(pacienteValido.cpf);
-            expect(paciente.idade).toEqual(pacienteValido.idade);
-            expect(paciente.telefone).toEqual(pacienteValido.telefone);
-            expect(paciente.email).toEqual(pacienteValido.email);
-            expect(paciente.sexo).toEqual(pacienteValido.sexo);
-            expect(paciente.peso).toEqual(pacienteValido.peso);
-            expect(paciente.altura).toEqual(pacienteValido.altura);
-            expect(paciente.endereco?.rua).toEqual(pacienteValido.endereco.rua);
-            expect(paciente.endereco?.numero).toEqual(pacienteValido.endereco.numero);
-            expect(paciente.endereco?.bairro).toEqual(pacienteValido.endereco.bairro);
-            expect(paciente.endereco?.cidade).toEqual(pacienteValido.endereco.cidade);
-        });
-
-        test('Deve apresentar erro ao atualizar o paciente', async () => {
-            const pacienteID = await informacaoParaTeste();
-            const pacienteValido =
-            {
-                nome: "Lupita Fernandes",
-                cpf: "576.445.124-47",
-                idade: 17,
-                telefone: "947756352",
-                email: "lupi@fernandes.com",
-                sexo: "F",
-                peso: 50,
-                altura: 1.60,
-                endereco: {
-                    rua: "PP",
-                    numero: 73,
-                    bairro: "DEBEB",
-                    cidade: "Mexico"
-                },
-            }
-            const result = async () => { await PacienteRepositorio.patchPaciente(pacienteID[0].id, pacienteValido) };
-            expect(result).toBeDefined();
-        });*/
-
         test('Deve apresentar erro ao passar id invalido na alteração', async () => {
             const idInvalido = -0;
             const paciente = await informacaoParaTeste();
             const result = async () => { await PacienteRepositorio.patchPaciente("idInvalido", paciente[1]) }
             expect(result).toBeDefined();
         });
+    });
 
-        describe('deletarPaciente()', () => {
-            test('deve deletar um paciente', async () => {
-                expect(async () =>{
-                    const deletaPaciente = await PacienteRepositorio.deletePaciente('id');
-                    expect(deletaPaciente).toBeDefined(); 
+    describe('deletarPaciente()', () => {
+        test('deve deletar um paciente', async () => {
+            expect(async () =>{
+                const deletaPaciente = await PacienteRepositorio.deletePaciente('id');
+                expect(deletaPaciente).toBeDefined(); 
             });
         });
     
-            test('deve deletar um paciente válido', async () => {
-                expect(async () =>{
-                    const deletaPaciente = await PacienteRepositorio.deletePaciente('id')
-                }).rejects.toThrowError();
-            });
+        test('deve deletar um paciente válido', async () => {
+            expect(async () =>{
+                const deletaPaciente = await PacienteRepositorio.deletePaciente('id')
+            }).rejects.toThrowError();
         });
     });
 });

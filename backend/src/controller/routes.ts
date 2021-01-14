@@ -11,8 +11,8 @@ export const path = '';
 export const router2 = Router();
 
 router.get('/unidade', unidadeController.getUnidades);
-router.get('/unidade/:unidid', unidadeController.getUnidadePorId);
-router.get('/unidade/:unidnome', unidadeController.getUnidadePorNome);
+router.get('/unidade/:unitid', unidadeController.getUnidadePorId);
+router.get('/unidade/:unitnome', unidadeController.getUnidadePorNome);
 
 router.get('/atendimento', atendimentoController.getAtendimentos);
 router.get('/atendimento/:atendid', atendimentoController.getAtendimentoPorId);
