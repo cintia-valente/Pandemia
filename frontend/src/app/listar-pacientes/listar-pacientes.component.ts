@@ -48,7 +48,7 @@ export class ListarPacientesComponent implements OnInit {
     this.paciente = [];
       this.pacienteService.getPacientes().subscribe({
         next: pacienteEncontrado => {
-          // Verifica se o paciente já nao esta na lista para adicionar
+          // Verifica se o paciente já está na lista para adicionar
           if (this.paciente.every(paciente => paciente.id !== pacienteEncontrado.id)){
               this.paciente.unshift(pacienteEncontrado);
           }
