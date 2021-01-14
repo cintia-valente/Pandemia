@@ -24,9 +24,9 @@ export class ListarPacientesComponent implements OnInit {
   ) {
 
     this.listForm = this.formBuilder.group({
-      unidades: [''],
-      pacientes: [''],
-      data: ['', Validators.required],
+      unidades: ['', Validators.required],
+      pacientes: ['', Validators.required],
+      data: [''],
       possibContagio: ['', Validators.required],
       teste1: [''], 
       teste2: [''],
