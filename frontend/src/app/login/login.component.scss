@@ -18,7 +18,7 @@ h1 {
     font-family: 'Dancing Script', cursive;
     color: white;
     font-size: 5em;
-    text-shadow: 3px 5px rgb(138, 138, 138);
+    text-shadow: 3px 5px black;
     margin-top: -130px;
 }
 
@@ -30,11 +30,19 @@ h2 {
     margin-top: -59px;
 }
 
+label {
+    margin-bottom: 10px;
+}
+
 .login {
     margin-top: 140px;
     color: white;
     text-shadow: 3px 0px black;
 }   
+
+#email {
+    margin-bottom: 10px;
+}
 
 //Responsividade Tablet
 @media (max-width: 952px) { 

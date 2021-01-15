@@ -9,10 +9,10 @@
                 <label>LOGIN</label>
             </div>
             <div>
-                <input placeholder="Nome de usuário" formControlName="email" type="email">
+                <input placeholder="Nome de usuário" id="email" formControlName="email" type="email">
             </div>
             <div>
-                <input placeholder="Senha" formControlName="password" type="password">
+                <input placeholder="Senha" id="senha" formControlName="password" type="password">
             </div>
             <div class="logar">
                 <button type="submit" [disabled]="!loginForm.valid" type="submit">

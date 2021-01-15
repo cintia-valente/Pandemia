@@ -27,7 +27,7 @@ export async function getAtendimentoPorId(req: express.Request, res: express.Res
 
 export async function getAtendimentoUnidadePorId(req: express.Request, res: express.Response, next: express.NextFunction):Promise<void> {
     try {
-        const id:string = req.params.idUnidade;
+        const id:string = req.params.unitid;
         const andamento:boolean =req.query.andamento == "true";
         const atendimento:Atendimento[] = await AtendimentoRepositorio.getAtendimentoUnidadePorId(id,andamento); // chama funcão que devolve todos atendimentos de uma unidade do BD
         res.json(atendimento);
