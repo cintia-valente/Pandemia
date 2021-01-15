@@ -29,9 +29,12 @@ Esta aplicação realiza cadastros de unidades de saúde, onde cada unidade regi
   <li>Abra o navagedor e acesse a porta <b>localhost:4200</b></li>
   <li>Faça o login com um dos <b>usuários</b> que está no banco:</li>
   <ul>
-        <li><b>basica@email.com</b> senha: <b>minhasenha</b></li>
-        <li><b>moinhos@email.co</b>m senha:</b> <b>minhasenha</b></li>
-        <li><b>lucas@email.com</b>senha: <b>minhasenha</b></li>
+        <li><b>basica@email.com</b> 
+               senha: <b>minhasenha</b></li>
+        <li><b>moinhos@email.com</b> 
+               senha:<b>minhasenha</b></li>
+        <li><b>lucas@email.com</b>
+               senha: <b>minhasenha</b></li>
    <ul>
 <ol>
  
