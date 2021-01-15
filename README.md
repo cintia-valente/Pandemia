@@ -27,7 +27,7 @@ Esta aplicação, com unidades de saúde cadastradas, possibilita que cada unida
   <li>No terminal do servidor, acesse a pasta backend e execute com o comando <b>npm run prod</b>.</li>
   <li>No terminal do cliente, acesse a pasta app, e execute com o comando <b>ng serve</b>.</li>
   <li>Abra o navagedor e acesse a porta <b>localhost:4200</b></li>
-  <li>Faça o login com um destes <b>usuários</b> que está no banco de dados:</li>
+  <li>Faça o login com um destes <b>usuários</b> que estão no banco de dados:</li>
   <ul>
         <li><b>basica@email.com</b> 
                Senha: <b>minhasenha</b></li>
