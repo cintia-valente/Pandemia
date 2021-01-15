@@ -27,11 +27,11 @@ Esta aplicação realiza cadastros de unidades de saúde, onde cada unidade regi
   <li>No terminal do servidor, na pasta backend, executar com o comando <b>npm run prod</b>.</li>
   <li>No terminal do cliente, na pasta app, executar com o comando <b>ng serve</b>.</li>
   <li>Abra o navagedor e acesse a porta <b>localhost:4200</b></li>
-  <li>Faça o login com um dos usuários que está no banco:</li>
+  <li>Faça o login com um dos <b>usuários</b> que está no banco:</li>
   <ul>
-        <li><b>usuario:</b> basica@email.com <b>senha:</b> minhasenha</li>
-        <li><b>usuario:</b> moinhos@email.com <b>senha:</b> minhasenha</li>
-        <li><b>usuario:</b> lucas@email.com <b>senha:</b> minhasenha</li>
+        <li><b>basica@email.com</b> senha: <b>minhasenha</b></li>
+        <li><b>moinhos@email.co</b>m senha:</b> <b>minhasenha</b></li>
+        <li><b>lucas@email.com</b>senha: <b>minhasenha</b></li>
    <ul>
 <ol>
  
