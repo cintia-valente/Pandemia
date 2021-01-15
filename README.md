@@ -37,11 +37,11 @@ Esta aplicação realiza cadastros de unidades de saúde, onde cada unidade regi
  
 # Tecnologias utilizadas: 
 <ul>
-   <li>Backend: NodeJS, TypeScript</li>
-   <li>Frontend: Angular, Bootstrap</li>
-   <li>Banco de Dados: MongoDB</li>
-   <li>Autenticação: JWT</li>
-   <li>Testes unitários e de integração: Jest</li>
+  <li><b>Backend:</b> NodeJS, TypeScript</li>
+   <li><b>Frontend:</b> Angular, Bootstrap</li>
+   <li><b>Banco de Dados:</b> MongoDB</li>
+   <li><b>Autenticação:</b> JWT</li>
+   <li><b>Testes unitários e de integração:</b> Jest</li>
 <ul>
 
 
