@@ -23,7 +23,7 @@ Esta aplicação, com unidades de saúde cadastradas, possibilita que cada unida
   <li>Abra <b>dois terminais</b>, um terminal irá rodar o <b>servidor</b> e o outro irá rodar o <b>cliente</b>.</li>
   <li>No terminal do servidor, na pasta backend, instalar as dependências utilizando o comando <b>npm run install</b>.</li>
   <li>No terminal do cliente, na pasta frontend, instalar as dependências utilizando o comando <b>npm run install</b>.</li>
-  <li>Faça o restore do banco de dados, localizado na pasta <b>database</b> dentro da pasta backend, conforme documentação do mongoDB: https://docs.mongodb.com/database-tools/mongorestore/#bin.mongorestore</li>
+  <li>Faça o restore do banco de dados, que está localizado na pasta <b>database</b> dentro da pasta backend, conforme documentação do mongoDB: https://docs.mongodb.com/database-tools/mongorestore/#bin.mongorestore</li>
   <li>No terminal do servidor, acesse a pasta backend e execute com o comando <b>npm run prod</b>.</li>
   <li>No terminal do cliente, acesse a pasta app, e execute com o comando <b>ng serve</b>.</li>
   <li>Abra o navagedor e acesse a porta <b>localhost:4200</b></li>
