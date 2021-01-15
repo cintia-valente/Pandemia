@@ -19,7 +19,7 @@ Esta aplicação realiza cadastros de unidades de saúde, onde cada unidade regi
 <img src="https://user-images.githubusercontent.com/38113015/104671652-f5a4f100-56bc-11eb-9545-f789de8cdf3f.png" width="800">
 
 # Execução
-<ul>
+<ol>
   <li>Abra <b>dois terminais</b>, um terminal irá rodar o <b>servidor</b> e o outro irá rodar o <b>cliente</b>.</li>
   <li>No terminal do servidor, na pasta backend, instalar as dependências utilizando o comando <b>npm run install</b>.</li>
   <li>No terminal do cliente, na pasta frontend, instalar as dependências utilizando o comando <b>npm run install</b>.</li>
@@ -33,7 +33,7 @@ Esta aplicação realiza cadastros de unidades de saúde, onde cada unidade regi
         <li><b>usuario:</b> moinhos@email.com <b>senha:</b> minhasenha</li>
         <li><b>usuario:</b> lucas@email.com <b>senha:</b> minhasenha</li>
    <ul>
-<ul>
+<ol>
  
 # Tecnologias utilizadas: 
 <ul>
