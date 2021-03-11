@@ -45,7 +45,7 @@ Esta aplicação, com unidades de saúde cadastradas, possibilita que cada unida
    <ul>
 <ol>
   
-# Tecnologias utilizadas: 
+# Tecnologias utilizadas
 <ul>
   <li><b>Backend:</b> NodeJS, TypeScript</li>
   <li><b>Frontend:</b> Angular, Bootstrap</li>
