@@ -37,14 +37,14 @@ Esta aplicação, com unidades de saúde cadastradas, possibilita que cada unida
                Senha: <b>minhasenha</b></li>
    <ul>
 <ol>
- 
+  
 # Tecnologias utilizadas: 
 <ul>
   <li><b>Backend:</b> NodeJS, TypeScript</li>
-   <li><b>Frontend:</b> Angular, Bootstrap</li>
-   <li><b>Banco de Dados:</b> MongoDB</li>
-   <li><b>Autenticação:</b> JWT</li>
-   <li><b>Testes unitários e de integração:</b> Jest</li>
+  <li><b>Frontend:</b> Angular, Bootstrap</li>
+  <li><b>Banco de Dados:</b> MongoDB</li>
+  <li><b>Autenticação:</b> JWT</li>
+  <li><b>Testes unitários e de integração:</b> Jest</li>
 <ul>
 
 
