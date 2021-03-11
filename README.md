@@ -19,7 +19,7 @@ Esta aplicação, com unidades de saúde cadastradas, possibilita que cada unida
 <img src="https://user-images.githubusercontent.com/38113015/104671652-f5a4f100-56bc-11eb-9545-f789de8cdf3f.png" width="800">
 
 # Execução
-<ol>
+<ul>
   <li>Abra <b>dois terminais</b>, um terminal irá rodar o <b>servidor</b> e o outro irá rodar o <b>cliente</b>.</li>
   
   <li>No terminal do servidor, na pasta backend, instalar as dependências utilizando o comando <b>npm run install</b>.</li>
@@ -35,6 +35,7 @@ Esta aplicação, com unidades de saúde cadastradas, possibilita que cada unida
   <li>Abra o navagedor e acesse a porta <b>localhost:4200</b></li>
   
   <li>Faça o login com um destes <b>usuários</b> que estão no banco de dados:</li>
+  
   <ul>
     <li><b>basica@email.com</b> 
            Senha: <b>minhasenha</b></li>
@@ -43,7 +44,7 @@ Esta aplicação, com unidades de saúde cadastradas, possibilita que cada unida
     <li><b>lucas@email.com</b>
            Senha: <b>minhasenha</b></li>
    </ul>
-</ol>
+</ul>
   
 # Tecnologias utilizadas
 <ul>
