@@ -42,8 +42,8 @@ Esta aplicação, com unidades de saúde cadastradas, possibilita que cada unida
            Senha: <b>minhasenha</b></li>
     <li><b>lucas@email.com</b>
            Senha: <b>minhasenha</b></li>
-   <ul>
-<ol>
+   </ul>
+</ol>
   
 # Tecnologias utilizadas
 <ul>
@@ -52,7 +52,7 @@ Esta aplicação, com unidades de saúde cadastradas, possibilita que cada unida
   <li><b>Banco de Dados:</b> MongoDB</li>
   <li><b>Autenticação:</b> JWT</li>
   <li><b>Testes unitários e de integração:</b> Jest</li>
-<ul>
+</ul>
 
 
 
