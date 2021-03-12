@@ -30,7 +30,7 @@ Esta aplicação, com unidades de saúde cadastradas, possibilita que cada unida
   
   <li>No terminal do servidor, acesse a pasta "backend" e execute com o comando <b>npm run prod</b>.</li>
   
-  <li>No terminal do cliente, acesse a pasta "app", e execute com o comando <b>ng serve</b>.</li>
+  <li>No terminal do cliente, na pasta raiz, acesse a pasta "app", e execute com o comando <b>ng serve</b>.</li>
   
   <li>Abra o navagedor e acesse a porta <b>localhost:4200</b></li>
   
