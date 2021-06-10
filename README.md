@@ -32,7 +32,7 @@ Esta aplicação, com unidades de saúde cadastradas, possibilita que cada unida
   
   <li>No terminal do cliente, na pasta raiz, acesse a pasta "app", e execute com o comando <b>ng serve</b>.</li>
   
-  <li>Abra o navagedor e acesse a porta <b>localhost:4200</b></li>
+  <li>Abra o navegador e acesse a porta <b>localhost:4200</b></li>
   
   <li>Faça o login com um destes <b>usuários</b> que estão no banco de dados:</li>
   
