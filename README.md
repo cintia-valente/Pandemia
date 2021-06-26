@@ -1,4 +1,11 @@
-![tecnologias](https://user-images.githubusercontent.com/38113015/104681406-03647180-56d1-11eb-9cb9-b62e41357454.png)
+<div styke ="display: inline_block"<br>
+  <img align="center" width="40" src="https://user-images.githubusercontent.com/38113015/123527789-b42b5f80-d6b8-11eb-8596-0274301d6753.png">
+  <img align="center" height="30" width="30" src="https://user-images.githubusercontent.com/38113015/123527747-572fa980-d6b8-11eb-9397-28c40f7fdbc3.png">
+  <img align="center" width="100" src="https://user-images.githubusercontent.com/38113015/123527748-58f96d00-d6b8-11eb-92e3-b130a7819532.png">
+  <img align="center" height="40" width="40" src="https://user-images.githubusercontent.com/38113015/123527751-5b5bc700-d6b8-11eb-8af3-149ceaf96f93.png">
+  <img align="center" width="40" src="https://user-images.githubusercontent.com/38113015/123527753-5e56b780-d6b8-11eb-8e15-488138f15c95.png">
+  <img align="center" width="50" src="https://user-images.githubusercontent.com/38113015/123527758-61ea3e80-d6b8-11eb-8722-c185985db1d1.png">
+</div>
 # Pandemia 
 Projeto da incubadora do Centro de Inovação Microsoft PUCRS em parceria com a empresa DBServer. O projeto tem como objetivo permitir que autoridades de saúde acompanhem a evolução de atendimentos e testes durante uma pandemia. 
 Esta aplicação, com unidades de saúde cadastradas, possibilita que cada unidade registre todos seus atendimentos relacionados com a pandemia.
