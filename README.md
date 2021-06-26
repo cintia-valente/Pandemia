@@ -6,6 +6,7 @@
   <img align="center" width="40" src="https://user-images.githubusercontent.com/38113015/123527753-5e56b780-d6b8-11eb-8e15-488138f15c95.png">
   <img align="center" width="50" src="https://user-images.githubusercontent.com/38113015/123527758-61ea3e80-d6b8-11eb-8722-c185985db1d1.png">
 </div>
+
 # Pandemia 
 Projeto da incubadora do Centro de Inovação Microsoft PUCRS em parceria com a empresa DBServer. O projeto tem como objetivo permitir que autoridades de saúde acompanhem a evolução de atendimentos e testes durante uma pandemia. 
 Esta aplicação, com unidades de saúde cadastradas, possibilita que cada unidade registre todos seus atendimentos relacionados com a pandemia.
